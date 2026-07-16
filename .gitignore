@@ -1,0 +1,11 @@
+/.idea/
+/.gradle/
+/.approval_tests_temp/
+/target/
+/build/
+
+.mvn/wrapper/maven-wrapper.jar
+libs/*.jar
+
+.project
+*.iml
