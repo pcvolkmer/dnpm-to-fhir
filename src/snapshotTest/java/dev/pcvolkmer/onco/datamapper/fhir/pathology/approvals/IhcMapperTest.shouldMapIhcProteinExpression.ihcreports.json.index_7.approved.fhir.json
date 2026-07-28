@@ -1,0 +1,57 @@
+{
+  "resourceType": "Observation",
+  "meta": {
+    "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
+    "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-immunohistochemistry" ]
+  },
+  "identifier": [ {
+    "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
+    "value": "6700b0b2-cc67-4711-aa12-04ecceb92bb6_ihc"
+  } ],
+  "status": "final",
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+      "code": "laboratory",
+      "display": "Laboratory"
+    } ]
+  }, {
+    "coding": [ {
+      "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
+      "code": "biomarker-category"
+    } ]
+  } ],
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "1234806008",
+      "display": "Observation using immunohistochemistry (observable entity)"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
+  },
+  "valueCodeableConcept": {
+    "coding": [ {
+      "system": "dnpm-dip/mtb/ihc/protein-expression/result",
+      "code": "3+",
+      "display": "3+"
+    } ]
+  },
+  "component": [ {
+    "code": {
+      "coding": [ {
+        "system": "http://loinc.org",
+        "code": "48018-6",
+        "display": "Gene studied [ID]"
+      } ]
+    },
+    "valueCodeableConcept": {
+      "coding": [ {
+        "system": "https://www.genenames.org/",
+        "code": "HGNC:33",
+        "display": "ABCA3"
+      } ]
+    }
+  } ]
+}
