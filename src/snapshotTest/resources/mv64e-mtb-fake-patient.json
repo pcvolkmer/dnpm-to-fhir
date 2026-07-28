@@ -1,4 +1,30 @@
 {
+  "metadata": {
+    "modelProjectConsent": {
+      "provisions": [
+        {
+          "date": "2025-06-07",
+          "purpose": "sequencing",
+          "type": "permit"
+        },
+        {
+          "date": "2025-06-08",
+          "purpose": "case-identification",
+          "type": "deny"
+        },
+        {
+          "date": "2025-06-08",
+          "purpose": "reidentification",
+          "type": "deny"
+        }
+      ],
+      "version": "4.0",
+      "date": "2024-12-23T23:37:56.686472"
+    },
+    "transferTAN": "785696879879679678901111162456435634aaaaaaaa345342342342342a8797",
+    "type": "initial",
+    "researchConsents": []
+  },
   "patient": {
     "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
     "gender": {

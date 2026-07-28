@@ -33,6 +33,7 @@ import dev.pcvolkmer.onco.datamapper.fhir.diagnosis.*;
 import dev.pcvolkmer.onco.datamapper.fhir.ngs.CnvMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ngs.DiagnostischeImplikationMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ngs.EinfacheVarianteMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.ngs.RnaFusionMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmMMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmNMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmTMapper;
@@ -197,6 +198,12 @@ public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<
           .filter(item -> item.getResults().getCopyNumberVariants() != null)
           .flatMap(item -> item.getResults().getCopyNumberVariants().stream())
           .forEach(item -> cnvMapper.addToBundle(bundle, item));
+
+      final var rnaFusionMapper = new RnaFusionMapper();
+      ngsReports.stream()
+          .filter(item -> item.getResults().getRnaFusions() != null)
+          .flatMap(item -> item.getResults().getRnaFusions().stream())
+          .forEach(item -> rnaFusionMapper.addToBundle(bundle, item));
 
       final var hrdScoreMapper = new HrdScoreMapper();
       ngsReports.stream()

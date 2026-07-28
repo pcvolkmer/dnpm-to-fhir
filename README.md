@@ -16,15 +16,15 @@ java -jar <dateiname>.jar --filename <file>
 
 | FHIR-Profil                         | Status | 
 |-------------------------------------|--------|
-| Diagnose - Diagnose Primärtumor     | ⛅      |
-| Diagnose - Tumorausbreitung         | ⛅ (1)  |
-| Diagnose - WHO-Grad ZNS             | ⛅ (2)  |
-| Diagnose - Oncotree                 | ⛅      |
-| Probe - Tumorzellgehalt             | ⛅      |
-| Therapieplan - CarePlan             | ☔ (3)  |
-| Therapieplan - Therapieempfehlung   | ⛅      |
-| Therapieplan - Studieneinschluss    | ⛅      |
-| Therapieplan - Weitere Empfehlungen | ☔ (4)  |
+| Diagnose - Diagnose Primärtumor     | ⛅     |
+| Diagnose - Tumorausbreitung         | ⛅ (1) |
+| Diagnose - WHO-Grad ZNS             | ⛅ (2) |
+| Diagnose - Oncotree                 | ⛅     |
+| Probe - Tumorzellgehalt             | ⛅     |
+| Therapieplan - CarePlan             | ☔ (3) |
+| Therapieplan - Therapieempfehlung   | ⛅     |
+| Therapieplan - Studieneinschluss    | ⛅     |
+| Therapieplan - Weitere Empfehlungen | ☔ (4) |
 
 1. Wird aktuell aus `otherClassifications` entnommen und ignoriert, wenn nur TNM angegeben ist.
 2. Eingefügt nur, wenn DNPM-System `dnpm-dip/mtb/who-grading-cns-tumors` gegeben.
@@ -35,16 +35,16 @@ java -jar <dateiname>.jar --filename <file>
 
 | FHIR-Profil                      | Status           | MII Förderkriterien |
 |----------------------------------|------------------|---------------------|
-| Variante - Einfache Variante     | ⛅                | Verpflichtend       |
-| Variante - Copy Number Variant   | ⛅                | Verpflichtend       |
+| Variante - Einfache Variante     | ⛅               | Verpflichtend       |
+| Variante - Copy Number Variant   | ⛅               | Verpflichtend       |
 | Variante - DNA-Fusion            | -                | Verpflichtend       |
-| Variante - RNA-Fusion            | -                | Verpflichtend       |
-| Gen. Implikation - diagnostisch  | ⛅                |                     |
+| Variante - RNA-Fusion            | ⛅               | Verpflichtend       |
+| Gen. Implikation - diagnostisch  | ⛅               |                     |
 | Gen. Implikation - therapeutisch | -                |                     |
-| Mol Biomarker - TMB              | ⛅                | Verpflichtend       |
-| Mol Biomarker - MSI              | ⛅                | Verpflichtend       |
-| Mol Biomarker - HRD-Score        | ⛅                | Verpflichtend       |
-| Mol Biomarker - BRCAness         | ⛅                | Verpflichtend       |
+| Mol Biomarker - TMB              | ⛅               | Verpflichtend       |
+| Mol Biomarker - MSI              | ⛅               | Verpflichtend       |
+| Mol Biomarker - HRD-Score        | ⛅               | Verpflichtend       |
+| Mol Biomarker - BRCAness         | ⛅               | Verpflichtend       |
 | RNA-Seq                          | Nicht vorgesehen | Verpflichtend       |
 
 ### MII-MTB – Bereich: Molekular-Pathologie-Befund
@@ -69,7 +69,7 @@ java -jar <dateiname>.jar --filename <file>
 
 | FHIR-Profil                          | Status | MII Förderkriterien |
 |--------------------------------------|--------|---------------------|
-| Diagnose: Condition                  | ⛅ (1)  | Verpflichtend       |
+| Diagnose: Condition                  | ⛅ (1) | Verpflichtend       |
 | Frühere Tumorerkrankungen: Condition | -      |                     |
 | Extension: ICD-O-3 Morphologie       | -      |                     |
 | Erstdiagnose Evidenz: List           | -      |                     |
@@ -80,10 +80,10 @@ java -jar <dateiname>.jar --filename <file>
 
 | FHIR-Profil                   | Status               | MII Förderkriterien |
 |-------------------------------|----------------------|---------------------|
-| TNM-Kategorie-T: Observation  | ⛅                    | Verpflichtend       |
-| TNM-Kategorie-N: Observation  | ⛅                    | Verpflichtend       |
-| TNM-Kategorie-M: Observation  | ⛅                    | Verpflichtend       |
-| Extension: TNM-Prefix(c/p)    | ⛅ (1)                |                     |
+| TNM-Kategorie-T: Observation  | ⛅                   | Verpflichtend       |
+| TNM-Kategorie-N: Observation  | ⛅                   | Verpflichtend       |
+| TNM-Kategorie-M: Observation  | ⛅                   | Verpflichtend       |
+| Extension: TNM-Prefix(c/p)    | ⛅ (1)               |                     |
 | TNM-Symbol-a: Observation     | Nicht vorgesehen (2) |                     |
 | TNM-Symbol-m: Observation     | Nicht vorgesehen (2) |                     |
 | TNM-Kategorie-L: Observation  | Nicht vorgesehen (2) |                     |
@@ -108,7 +108,7 @@ java -jar <dateiname>.jar --filename <file>
 
 | FHIR-Profil                       | Status |
 |-----------------------------------|--------|
-| Allgemeiner Leistungszustand ECOG | ⛅      |
+| Allgemeiner Leistungszustand ECOG | ⛅     |
 
 ## Weitere Hinweise
 
