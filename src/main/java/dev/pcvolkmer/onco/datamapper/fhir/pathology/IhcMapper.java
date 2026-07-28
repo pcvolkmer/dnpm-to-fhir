@@ -122,6 +122,12 @@ public class IhcMapper extends ObservationMapper<ProteinExpression>
     getProteinExpressions(sourceItem).forEach(item -> this.addToBundle(bundle, item));
   }
 
+  public List<Reference> getReferences(IhcReport sourceItem) {
+    return getProteinExpressions(sourceItem).stream()
+        .map(this::getReference)
+        .collect(Collectors.toList());
+  }
+
   private List<ProteinExpression> getProteinExpressions(IhcReport sourceItem) {
     if (sourceItem.getResults() == null || sourceItem.getResults().getProteinExpression() == null) {
       return List.of();

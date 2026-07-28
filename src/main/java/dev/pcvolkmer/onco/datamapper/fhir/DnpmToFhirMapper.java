@@ -34,6 +34,8 @@ import dev.pcvolkmer.onco.datamapper.fhir.ngs.CnvMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ngs.DiagnostischeImplikationMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ngs.EinfacheVarianteMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ngs.RnaFusionMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.pathology.IhcMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.pathology.MolekularPathologieBefundMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmMMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmNMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmTMapper;
@@ -236,6 +238,18 @@ public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<
                   "MSI interpretation with MMR is not supported and ignored in msiFindings[{}]",
                   item.getId());
             }
+          });
+    }
+
+    final var ihcReports = patientRecord.getIhcReports();
+    if (ihcReports != null) {
+      final var ihcMapper = new IhcMapper();
+      final var molekularPathologieBefundMapper = new MolekularPathologieBefundMapper(ihcMapper);
+
+      ihcReports.forEach(
+          item -> {
+            ihcMapper.addManyToBundle(bundle, item);
+            molekularPathologieBefundMapper.addToBundle(bundle, item);
           });
     }
 

@@ -52,7 +52,7 @@ java -jar <dateiname>.jar --filename <file>
 | FHIR-Profil                    | Status | 
 |--------------------------------|--------|
 | DiagnosticReport               | -      |
-| Immunhistochemie - Observation | -      |
+| Immunhistochemie - Observation | ⛅      |
 | P-Immunhistochemie             | -      |
 | Immunhistochemie MMR MSI       | -      |
 | Immunhistochemie PDL1          | -      |
