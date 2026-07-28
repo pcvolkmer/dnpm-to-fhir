@@ -1,0 +1,60 @@
+{
+  "ngsReports": [
+    {
+      "results": {
+        "rnaFusions": [
+          {
+            "id": "4f9a6477-a191-4be9-b724-963e40007a2d",
+            "patient": {
+              "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
+              "type": "Patient"
+            },
+            "externalIds": [
+              {
+                "value": "2f60cf32-aca3-4a44-9f1a-46e681043b2b",
+                "system": "https://cancer.sanger.ac.uk/cosmic"
+              }
+            ],
+            "localization": [
+              {
+                "code": "intergenic",
+                "display": "Intergenic",
+                "system": "dnpm-dip/variant/localization"
+              }
+            ],
+            "fusionPartner5prime": {
+              "transcriptId": {
+                "value": "abf2dcea-23e4-41e4-9a76-80f8bcc6d368",
+                "system": "https://www.ncbi.nlm.nih.gov/refseq"
+              },
+              "exonId": "3",
+              "gene": {
+                "code": "HGNC:5173",
+                "display": "HRAS",
+                "system": "https://www.genenames.org/"
+              },
+              "position": 712,
+              "strand": "+"
+            },
+            "fusionPartner3prime": {
+              "transcriptId": {
+                "value": "3a7e02f1-0540-445b-a8c9-7fa4879b90e9",
+                "system": "https://www.ncbi.nlm.nih.gov/refseq"
+              },
+              "exonId": "7",
+              "gene": {
+                "code": "HGNC:18615",
+                "display": "BRAFP1",
+                "system": "https://www.genenames.org/"
+              },
+              "position": 108,
+              "strand": "+"
+            },
+            "effect": "Effect",
+            "reportedNumReads": 7
+          }
+        ]
+      }
+    }
+  ]
+}

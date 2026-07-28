@@ -4885,6 +4885,1005 @@
       "url": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|9395acc5-abc3-4a98-b2ae-eeab3e3360b6_ngscnv"
     }
   }, {
+    "fullUrl": "urn:uuid:f5b60b3a-f115-5f77-1a8b-1d0417690093",
+    "resource": {
+      "resourceType": "Observation",
+      "meta": {
+        "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
+        "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-rna-fusion" ]
+      },
+      "identifier": [ {
+        "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
+        "value": "4f9a6477-a191-4be9-b724-963e40007a2d_ngsrnafusion"
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ]
+      }, {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE"
+        } ]
+      } ],
+      "subject": {
+        "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
+      },
+      "method": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "LA26398-0",
+          "display": "Sequencing"
+        } ]
+      },
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-gene",
+            "display": "Five Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:5173",
+            "display": "HRAS"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-position",
+            "display": "Five Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 712
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-strand",
+            "display": "Five Prime Strand"
+          } ]
+        },
+        "valueString": "+"
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-gene",
+            "display": "Three Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:18615",
+            "display": "BRAFP1"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-position",
+            "display": "Three Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 108
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-strand",
+            "display": "Three Prime Strand"
+          } ]
+        },
+        "valueString": "+"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|4f9a6477-a191-4be9-b724-963e40007a2d_ngsrnafusion"
+    }
+  }, {
+    "fullUrl": "urn:uuid:9876f203-a0e8-a6f1-9e54-7ab88cec4aad",
+    "resource": {
+      "resourceType": "Observation",
+      "meta": {
+        "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
+        "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-rna-fusion" ]
+      },
+      "identifier": [ {
+        "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
+        "value": "f1041ba3-571e-471a-ba2b-159aa24eaad3_ngsrnafusion"
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ]
+      }, {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE"
+        } ]
+      } ],
+      "subject": {
+        "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
+      },
+      "method": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "LA26398-0",
+          "display": "Sequencing"
+        } ]
+      },
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-gene",
+            "display": "Five Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:21298",
+            "display": "AACS"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-position",
+            "display": "Five Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 95
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-strand",
+            "display": "Five Prime Strand"
+          } ]
+        },
+        "valueString": "-"
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-gene",
+            "display": "Three Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:6407",
+            "display": "KRAS"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-position",
+            "display": "Three Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 742
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-strand",
+            "display": "Three Prime Strand"
+          } ]
+        },
+        "valueString": "+"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|f1041ba3-571e-471a-ba2b-159aa24eaad3_ngsrnafusion"
+    }
+  }, {
+    "fullUrl": "urn:uuid:87d4b0d0-2ec2-4492-67e9-e49d3d515b46",
+    "resource": {
+      "resourceType": "Observation",
+      "meta": {
+        "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
+        "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-rna-fusion" ]
+      },
+      "identifier": [ {
+        "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
+        "value": "5c0ff6be-276b-41d4-a85c-7f960d5e86e3_ngsrnafusion"
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ]
+      }, {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE"
+        } ]
+      } ],
+      "subject": {
+        "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
+      },
+      "method": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "LA26398-0",
+          "display": "Sequencing"
+        } ]
+      },
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-gene",
+            "display": "Five Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:886",
+            "display": "ATRX"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-position",
+            "display": "Five Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 602
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-strand",
+            "display": "Five Prime Strand"
+          } ]
+        },
+        "valueString": "+"
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-gene",
+            "display": "Three Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:886",
+            "display": "ATRX"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-position",
+            "display": "Three Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 401
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-strand",
+            "display": "Three Prime Strand"
+          } ]
+        },
+        "valueString": "+"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|5c0ff6be-276b-41d4-a85c-7f960d5e86e3_ngsrnafusion"
+    }
+  }, {
+    "fullUrl": "urn:uuid:6349f978-683d-a8a7-99d0-f60f03ca48d0",
+    "resource": {
+      "resourceType": "Observation",
+      "meta": {
+        "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
+        "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-rna-fusion" ]
+      },
+      "identifier": [ {
+        "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
+        "value": "c50db958-78ff-445c-9b91-65b981c7b698_ngsrnafusion"
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ]
+      }, {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE"
+        } ]
+      } ],
+      "subject": {
+        "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
+      },
+      "method": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "LA26398-0",
+          "display": "Sequencing"
+        } ]
+      },
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-gene",
+            "display": "Five Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:18615",
+            "display": "BRAFP1"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-position",
+            "display": "Five Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 122
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-strand",
+            "display": "Five Prime Strand"
+          } ]
+        },
+        "valueString": "+"
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-gene",
+            "display": "Three Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:3942",
+            "display": "MTOR"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-position",
+            "display": "Three Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 265
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-strand",
+            "display": "Three Prime Strand"
+          } ]
+        },
+        "valueString": "-"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|c50db958-78ff-445c-9b91-65b981c7b698_ngsrnafusion"
+    }
+  }, {
+    "fullUrl": "urn:uuid:352f79e2-ea86-5b98-4a71-8f8b666dc666",
+    "resource": {
+      "resourceType": "Observation",
+      "meta": {
+        "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
+        "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-rna-fusion" ]
+      },
+      "identifier": [ {
+        "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
+        "value": "d32fb033-bed2-4879-90ed-7247af398f5f_ngsrnafusion"
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ]
+      }, {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE"
+        } ]
+      } ],
+      "subject": {
+        "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
+      },
+      "method": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "LA26398-0",
+          "display": "Sequencing"
+        } ]
+      },
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-gene",
+            "display": "Five Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:1100",
+            "display": "BRCA1"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-position",
+            "display": "Five Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 815
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-strand",
+            "display": "Five Prime Strand"
+          } ]
+        },
+        "valueString": "-"
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-gene",
+            "display": "Three Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:25662",
+            "display": "AAGAB"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-position",
+            "display": "Three Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 323
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-strand",
+            "display": "Three Prime Strand"
+          } ]
+        },
+        "valueString": "-"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|d32fb033-bed2-4879-90ed-7247af398f5f_ngsrnafusion"
+    }
+  }, {
+    "fullUrl": "urn:uuid:043cda1a-301f-59f9-aa97-eae926cc3133",
+    "resource": {
+      "resourceType": "Observation",
+      "meta": {
+        "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
+        "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-rna-fusion" ]
+      },
+      "identifier": [ {
+        "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
+        "value": "4f362a6e-f485-481b-82ec-725c2e799c3b_ngsrnafusion"
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ]
+      }, {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE"
+        } ]
+      } ],
+      "subject": {
+        "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
+      },
+      "method": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "LA26398-0",
+          "display": "Sequencing"
+        } ]
+      },
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-gene",
+            "display": "Five Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:1100",
+            "display": "BRCA1"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-position",
+            "display": "Five Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 844
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-strand",
+            "display": "Five Prime Strand"
+          } ]
+        },
+        "valueString": "+"
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-gene",
+            "display": "Three Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:25829",
+            "display": "ABRAXAS1"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-position",
+            "display": "Three Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 865
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-strand",
+            "display": "Three Prime Strand"
+          } ]
+        },
+        "valueString": "-"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|4f362a6e-f485-481b-82ec-725c2e799c3b_ngsrnafusion"
+    }
+  }, {
+    "fullUrl": "urn:uuid:47788f3b-7361-7fc0-4fc4-89d2423b853d",
+    "resource": {
+      "resourceType": "Observation",
+      "meta": {
+        "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
+        "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-rna-fusion" ]
+      },
+      "identifier": [ {
+        "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
+        "value": "b5e55924-66f5-457f-b830-22de3767aa06_ngsrnafusion"
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ]
+      }, {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE"
+        } ]
+      } ],
+      "subject": {
+        "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
+      },
+      "method": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "LA26398-0",
+          "display": "Sequencing"
+        } ]
+      },
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-gene",
+            "display": "Five Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:21597",
+            "display": "ACAD10"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-position",
+            "display": "Five Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 105
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-strand",
+            "display": "Five Prime Strand"
+          } ]
+        },
+        "valueString": "+"
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-gene",
+            "display": "Three Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:18615",
+            "display": "BRAFP1"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-position",
+            "display": "Three Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 974
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-strand",
+            "display": "Three Prime Strand"
+          } ]
+        },
+        "valueString": "+"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|b5e55924-66f5-457f-b830-22de3767aa06_ngsrnafusion"
+    }
+  }, {
+    "fullUrl": "urn:uuid:eb682bca-b03d-b7cc-7858-9be2d810eb70",
+    "resource": {
+      "resourceType": "Observation",
+      "meta": {
+        "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
+        "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-rna-fusion" ]
+      },
+      "identifier": [ {
+        "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
+        "value": "1b8a88fd-b34e-41dd-bcf0-b51b1e25d986_ngsrnafusion"
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ]
+      }, {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE"
+        } ]
+      } ],
+      "subject": {
+        "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
+      },
+      "method": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "LA26398-0",
+          "display": "Sequencing"
+        } ]
+      },
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-gene",
+            "display": "Five Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:5173",
+            "display": "HRAS"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-position",
+            "display": "Five Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 433
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-strand",
+            "display": "Five Prime Strand"
+          } ]
+        },
+        "valueString": "+"
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-gene",
+            "display": "Three Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:3236",
+            "display": "EGFR"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-position",
+            "display": "Three Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 82
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-strand",
+            "display": "Three Prime Strand"
+          } ]
+        },
+        "valueString": "-"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|1b8a88fd-b34e-41dd-bcf0-b51b1e25d986_ngsrnafusion"
+    }
+  }, {
+    "fullUrl": "urn:uuid:f9818ed0-5ebf-ff22-0eca-8cb6a9a808f9",
+    "resource": {
+      "resourceType": "Observation",
+      "meta": {
+        "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
+        "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-rna-fusion" ]
+      },
+      "identifier": [ {
+        "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
+        "value": "a29e8486-48a6-4673-b45e-b818d41ca065_ngsrnafusion"
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ]
+      }, {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE"
+        } ]
+      } ],
+      "subject": {
+        "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
+      },
+      "method": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "LA26398-0",
+          "display": "Sequencing"
+        } ]
+      },
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-gene",
+            "display": "Five Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:21597",
+            "display": "ACAD10"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-position",
+            "display": "Five Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 308
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "five-prime-strand",
+            "display": "Five Prime Strand"
+          } ]
+        },
+        "valueString": "-"
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-gene",
+            "display": "Three Prime Gene"
+          } ]
+        },
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "https://www.genenames.org/",
+            "code": "HGNC:6407",
+            "display": "KRAS"
+          } ]
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-position",
+            "display": "Three Prime Position"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 195
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+            "code": "three-prime-strand",
+            "display": "Three Prime Strand"
+          } ]
+        },
+        "valueString": "+"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|a29e8486-48a6-4673-b45e-b818d41ca065_ngsrnafusion"
+    }
+  }, {
     "fullUrl": "urn:uuid:dbdd1430-9b3a-fb23-a861-ca5a66f3c315",
     "resource": {
       "resourceType": "Observation",
