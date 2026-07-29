@@ -28,16 +28,6 @@
   }, {
     "reference": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|37e310b4-3ed2-455c-8f39-2c1ca59f2a3f_ihc"
   }, {
-    "reference": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|2f184f8b-7762-42ea-9afc-1b14727e3458_ihc"
-  }, {
-    "reference": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|1c80d2f3-566d-40b4-85e1-62ec430791fd_ihc"
-  }, {
-    "reference": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|980036a2-470d-40b0-9b8d-28751273640a_ihc"
-  }, {
-    "reference": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|a6e81d37-50e1-4cfc-b975-6c33ee7fb51c_ihc"
-  }, {
-    "reference": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|48a1defc-c101-4f09-81cc-e41dcf6d4de6_ihc"
-  }, {
     "reference": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|6700b0b2-cc67-4711-aa12-04ecceb92bb6_ihc"
   } ]
 }

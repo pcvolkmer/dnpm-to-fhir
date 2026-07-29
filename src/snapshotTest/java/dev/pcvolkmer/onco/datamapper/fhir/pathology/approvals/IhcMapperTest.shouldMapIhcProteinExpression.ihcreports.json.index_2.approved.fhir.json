@@ -2,11 +2,11 @@
   "resourceType": "Observation",
   "meta": {
     "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
-    "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-immunohistochemistry" ]
+    "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-immunohistochemistry-her2" ]
   },
   "identifier": [ {
     "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
-    "value": "2f184f8b-7762-42ea-9afc-1b14727e3458_ihc"
+    "value": "6700b0b2-cc67-4711-aa12-04ecceb92bb6_ihc"
   } ],
   "status": "final",
   "category": [ {
@@ -23,9 +23,9 @@
   } ],
   "code": {
     "coding": [ {
-      "system": "http://snomed.info/sct",
-      "code": "1234806008",
-      "display": "Observation using immunohistochemistry (observable entity)"
+      "system": "http://loinc.org",
+      "code": "18474-7",
+      "display": "HER2 Ag [Presence] in Tissue by Immune stain"
     } ]
   },
   "subject": {
@@ -33,9 +33,9 @@
   },
   "valueCodeableConcept": {
     "coding": [ {
-      "system": "dnpm-dip/mtb/ihc/protein-expression/result",
-      "code": "1+",
-      "display": "1+"
+      "system": "http://loinc.org",
+      "code": "LA11843-2",
+      "display": "3+"
     } ]
   },
   "component": [ {
@@ -49,8 +49,8 @@
     "valueCodeableConcept": {
       "coding": [ {
         "system": "https://www.genenames.org/",
-        "code": "HGNC:5173",
-        "display": "HRAS"
+        "code": "HGNC:3430",
+        "display": "ERBB2"
       } ]
     }
   } ]

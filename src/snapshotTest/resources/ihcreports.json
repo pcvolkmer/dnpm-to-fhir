@@ -28,18 +28,6 @@
                             "code": "not-exp",
                             "display": "Nicht exprimiert",
                             "system": "dnpm-dip/mtb/ihc/protein-expression/result"
-                        },
-                        "tpsScore": 55,
-                        "cpsScore": 41,
-                        "icScore": {
-                            "code": "0",
-                            "display": "< 1%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/ic-score"
-                        },
-                        "tcScore": {
-                            "code": "5",
-                            "display": ">= 50%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/tc-score"
                         }
                     },
                     {
@@ -49,13 +37,13 @@
                             "type": "Patient"
                         },
                         "protein": {
-                            "code": "HGNC:3689",
-                            "display": "FGFR2",
+                            "code": "HGNC:17635",
+                            "display": "CD274",
                             "system": "https://www.genenames.org/"
                         },
                         "value": {
-                            "code": "1+",
-                            "display": "1+",
+                            "code": "exp",
+                            "display": "Exprimiert",
                             "system": "dnpm-dip/mtb/ihc/protein-expression/result"
                         },
                         "tpsScore": 62,
@@ -72,177 +60,20 @@
                         }
                     },
                     {
-                        "id": "2f184f8b-7762-42ea-9afc-1b14727e3458",
-                        "patient": {
-                            "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
-                            "type": "Patient"
-                        },
-                        "protein": {
-                            "code": "HGNC:5173",
-                            "display": "HRAS",
-                            "system": "https://www.genenames.org/"
-                        },
-                        "value": {
-                            "code": "1+",
-                            "display": "1+",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/result"
-                        },
-                        "tpsScore": 79,
-                        "cpsScore": 47,
-                        "icScore": {
-                            "code": "3",
-                            "display": ">= 10%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/ic-score"
-                        },
-                        "tcScore": {
-                            "code": "6",
-                            "display": ">= 75%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/tc-score"
-                        }
-                    },
-                    {
-                        "id": "1c80d2f3-566d-40b4-85e1-62ec430791fd",
-                        "patient": {
-                            "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
-                            "type": "Patient"
-                        },
-                        "protein": {
-                            "code": "HGNC:18615",
-                            "display": "BRAFP1",
-                            "system": "https://www.genenames.org/"
-                        },
-                        "value": {
-                            "code": "2+",
-                            "display": "2+",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/result"
-                        },
-                        "tpsScore": 88,
-                        "cpsScore": 16,
-                        "icScore": {
-                            "code": "1",
-                            "display": ">= 1%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/ic-score"
-                        },
-                        "tcScore": {
-                            "code": "2",
-                            "display": ">= 5%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/tc-score"
-                        }
-                    },
-                    {
-                        "id": "980036a2-470d-40b0-9b8d-28751273640a",
-                        "patient": {
-                            "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
-                            "type": "Patient"
-                        },
-                        "protein": {
-                            "code": "HGNC:21298",
-                            "display": "AACS",
-                            "system": "https://www.genenames.org/"
-                        },
-                        "value": {
-                            "code": "not-exp",
-                            "display": "Nicht exprimiert",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/result"
-                        },
-                        "tpsScore": 32,
-                        "cpsScore": 7,
-                        "icScore": {
-                            "code": "2",
-                            "display": ">= 5%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/ic-score"
-                        },
-                        "tcScore": {
-                            "code": "2",
-                            "display": ">= 5%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/tc-score"
-                        }
-                    },
-                    {
-                        "id": "a6e81d37-50e1-4cfc-b975-6c33ee7fb51c",
-                        "patient": {
-                            "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
-                            "type": "Patient"
-                        },
-                        "protein": {
-                            "code": "HGNC:21597",
-                            "display": "ACAD10",
-                            "system": "https://www.genenames.org/"
-                        },
-                        "value": {
-                            "code": "unknown",
-                            "display": "untersucht, kein Ergebnis",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/result"
-                        },
-                        "tpsScore": 29,
-                        "cpsScore": 2,
-                        "icScore": {
-                            "code": "2",
-                            "display": ">= 5%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/ic-score"
-                        },
-                        "tcScore": {
-                            "code": "4",
-                            "display": ">= 25%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/tc-score"
-                        }
-                    },
-                    {
-                        "id": "48a1defc-c101-4f09-81cc-e41dcf6d4de6",
-                        "patient": {
-                            "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
-                            "type": "Patient"
-                        },
-                        "protein": {
-                            "code": "HGNC:33",
-                            "display": "ABCA3",
-                            "system": "https://www.genenames.org/"
-                        },
-                        "value": {
-                            "code": "1+",
-                            "display": "1+",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/result"
-                        },
-                        "tpsScore": 98,
-                        "cpsScore": 24,
-                        "icScore": {
-                            "code": "1",
-                            "display": ">= 1%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/ic-score"
-                        },
-                        "tcScore": {
-                            "code": "0",
-                            "display": "< 1%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/tc-score"
-                        }
-                    },
-                    {
                         "id": "6700b0b2-cc67-4711-aa12-04ecceb92bb6",
                         "patient": {
                             "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
                             "type": "Patient"
                         },
                         "protein": {
-                            "code": "HGNC:33",
-                            "display": "ABCA3",
+                            "code": "HGNC:3430",
+                            "display": "ERBB2",
                             "system": "https://www.genenames.org/"
                         },
                         "value": {
                             "code": "3+",
                             "display": "3+",
                             "system": "dnpm-dip/mtb/ihc/protein-expression/result"
-                        },
-                        "tpsScore": 62,
-                        "cpsScore": 98,
-                        "icScore": {
-                            "code": "3",
-                            "display": ">= 10%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/ic-score"
-                        },
-                        "tcScore": {
-                            "code": "1",
-                            "display": ">= 1%",
-                            "system": "dnpm-dip/mtb/ihc/protein-expression/tc-score"
                         }
                     }
                 ],

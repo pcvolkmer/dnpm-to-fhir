@@ -6460,11 +6460,11 @@
       "subject": {
         "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
       },
-      "valueCodeableConcept": {
+      "dataAbsentReason": {
         "coding": [ {
-          "system": "dnpm-dip/mtb/ihc/protein-expression/result",
+          "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
           "code": "unknown",
-          "display": "untersucht, kein Ergebnis"
+          "display": "Unknown"
         } ]
       },
       "component": [ {
