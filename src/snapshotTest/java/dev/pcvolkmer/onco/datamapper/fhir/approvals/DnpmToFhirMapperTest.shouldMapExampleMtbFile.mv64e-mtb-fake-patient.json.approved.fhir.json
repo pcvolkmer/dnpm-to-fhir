@@ -4929,11 +4929,14 @@
         "code": {
           "coding": [ {
             "system": "http://loinc.org",
-            "code": "82121-5"
+            "code": "82121-5",
+            "display": "Allelic read depth"
           } ]
         },
         "valueQuantity": {
-          "value": 6
+          "value": 6,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
         }
       }, {
         "code": {
@@ -5068,11 +5071,14 @@
         "code": {
           "coding": [ {
             "system": "http://loinc.org",
-            "code": "82121-5"
+            "code": "82121-5",
+            "display": "Allelic read depth"
           } ]
         },
         "valueQuantity": {
-          "value": 7
+          "value": 7,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
         }
       }, {
         "code": {
@@ -5205,11 +5211,14 @@
         "code": {
           "coding": [ {
             "system": "http://loinc.org",
-            "code": "82121-5"
+            "code": "82121-5",
+            "display": "Allelic read depth"
           } ]
         },
         "valueQuantity": {
-          "value": 9
+          "value": 9,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
         }
       }, {
         "code": {
@@ -5344,11 +5353,14 @@
         "code": {
           "coding": [ {
             "system": "http://loinc.org",
-            "code": "82121-5"
+            "code": "82121-5",
+            "display": "Allelic read depth"
           } ]
         },
         "valueQuantity": {
-          "value": 3
+          "value": 3,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
         }
       }, {
         "code": {
@@ -5483,11 +5495,14 @@
         "code": {
           "coding": [ {
             "system": "http://loinc.org",
-            "code": "82121-5"
+            "code": "82121-5",
+            "display": "Allelic read depth"
           } ]
         },
         "valueQuantity": {
-          "value": 7
+          "value": 7,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
         }
       }, {
         "code": {
@@ -5622,11 +5637,14 @@
         "code": {
           "coding": [ {
             "system": "http://loinc.org",
-            "code": "82121-5"
+            "code": "82121-5",
+            "display": "Allelic read depth"
           } ]
         },
         "valueQuantity": {
-          "value": 6
+          "value": 6,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
         }
       }, {
         "code": {
@@ -5761,11 +5779,14 @@
         "code": {
           "coding": [ {
             "system": "http://loinc.org",
-            "code": "82121-5"
+            "code": "82121-5",
+            "display": "Allelic read depth"
           } ]
         },
         "valueQuantity": {
-          "value": 6
+          "value": 6,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
         }
       }, {
         "code": {
@@ -5899,6 +5920,19 @@
       "component": [ {
         "code": {
           "coding": [ {
+            "system": "http://loinc.org",
+            "code": "82121-5",
+            "display": "Allelic read depth"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 7,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
+        }
+      }, {
+        "code": {
+          "coding": [ {
             "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
             "code": "five-prime-gene",
             "display": "Five Prime Gene"
@@ -6014,6 +6048,19 @@
         } ]
       },
       "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "82121-5",
+            "display": "Allelic read depth"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 8,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
+        }
+      }, {
         "code": {
           "coding": [ {
             "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
@@ -6133,6 +6180,19 @@
       "component": [ {
         "code": {
           "coding": [ {
+            "system": "http://loinc.org",
+            "code": "82121-5",
+            "display": "Allelic read depth"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 9,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
+        }
+      }, {
+        "code": {
+          "coding": [ {
             "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
             "code": "five-prime-gene",
             "display": "Five Prime Gene"
@@ -6248,6 +6308,19 @@
         } ]
       },
       "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "82121-5",
+            "display": "Allelic read depth"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 7,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
+        }
+      }, {
         "code": {
           "coding": [ {
             "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
@@ -6367,6 +6440,19 @@
       "component": [ {
         "code": {
           "coding": [ {
+            "system": "http://loinc.org",
+            "code": "82121-5",
+            "display": "Allelic read depth"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 7,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
+        }
+      }, {
+        "code": {
+          "coding": [ {
             "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
             "code": "five-prime-gene",
             "display": "Five Prime Gene"
@@ -6482,6 +6568,19 @@
         } ]
       },
       "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "82121-5",
+            "display": "Allelic read depth"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 3,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
+        }
+      }, {
         "code": {
           "coding": [ {
             "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
@@ -6601,6 +6700,19 @@
       "component": [ {
         "code": {
           "coding": [ {
+            "system": "http://loinc.org",
+            "code": "82121-5",
+            "display": "Allelic read depth"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 5,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
+        }
+      }, {
+        "code": {
+          "coding": [ {
             "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
             "code": "five-prime-gene",
             "display": "Five Prime Gene"
@@ -6718,6 +6830,19 @@
       "component": [ {
         "code": {
           "coding": [ {
+            "system": "http://loinc.org",
+            "code": "82121-5",
+            "display": "Allelic read depth"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 6,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
+        }
+      }, {
+        "code": {
+          "coding": [ {
             "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
             "code": "five-prime-gene",
             "display": "Five Prime Gene"
@@ -6833,6 +6958,19 @@
         } ]
       },
       "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "82121-5",
+            "display": "Allelic read depth"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 8,
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
+        }
+      }, {
         "code": {
           "coding": [ {
             "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
