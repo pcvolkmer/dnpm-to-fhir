@@ -41,11 +41,14 @@
     "code": {
       "coding": [ {
         "system": "http://loinc.org",
-        "code": "82121-5"
+        "code": "82121-5",
+        "display": "Allelic read depth"
       } ]
     },
     "valueQuantity": {
-      "value": 6
+      "value": 6,
+      "system": "http://unitsofmeasure.org",
+      "code": "1"
     }
   }, {
     "code": {

@@ -71,6 +71,21 @@ public class RnaFusionMapper extends AbstractNgsMapper<RnaFusion> {
         new CodeableConcept()
             .addCoding(new Coding().setCode("LA4048-6").setSystem("http://loinc.org")));
 
+    // Number reported reads
+    result.addComponent(
+        new Observation.ObservationComponentComponent()
+            .setCode(
+                new CodeableConcept()
+                    .addCoding(
+                        new Coding()
+                            .setCode("82121-5")
+                            .setSystem("http://loinc.org")
+                            .setDisplay("Allelic read depth")))
+            .setValue(
+                new Quantity(sourceItem.getReportedNumReads())
+                    .setSystem("http://unitsofmeasure.org")
+                    .setCode("1")));
+
     // 5' Fusion Partner
     final var fivePrime = sourceItem.getFusionPartner5prime();
     if (null == fivePrime) {

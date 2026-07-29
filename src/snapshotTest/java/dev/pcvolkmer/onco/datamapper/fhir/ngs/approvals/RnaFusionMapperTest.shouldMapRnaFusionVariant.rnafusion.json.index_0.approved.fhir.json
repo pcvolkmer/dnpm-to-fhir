@@ -40,6 +40,19 @@
   "component": [ {
     "code": {
       "coding": [ {
+        "system": "http://loinc.org",
+        "code": "82121-5",
+        "display": "Allelic read depth"
+      } ]
+    },
+    "valueQuantity": {
+      "value": 7,
+      "system": "http://unitsofmeasure.org",
+      "code": "1"
+    }
+  }, {
+    "code": {
+      "coding": [ {
         "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
         "code": "five-prime-gene",
         "display": "Five Prime Gene"

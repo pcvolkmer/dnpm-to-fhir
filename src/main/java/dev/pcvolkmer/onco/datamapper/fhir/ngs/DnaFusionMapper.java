@@ -76,8 +76,15 @@ public class DnaFusionMapper extends AbstractNgsMapper<DnaFusion> {
         new Observation.ObservationComponentComponent()
             .setCode(
                 new CodeableConcept()
-                    .addCoding(new Coding().setCode("82121-5").setSystem("http://loinc.org")))
-            .setValue(new Quantity(sourceItem.getReportedNumReads())));
+                    .addCoding(
+                        new Coding()
+                            .setCode("82121-5")
+                            .setSystem("http://loinc.org")
+                            .setDisplay("Allelic read depth")))
+            .setValue(
+                new Quantity(sourceItem.getReportedNumReads())
+                    .setSystem("http://unitsofmeasure.org")
+                    .setCode("1")));
 
     // 5' Fusion Partner
     final var fivePrime = sourceItem.getFusionPartner5prime();
