@@ -69,7 +69,7 @@ public class DnaFusionMapper extends AbstractNgsMapper<DnaFusion> {
 
     result.setMethod(
         new CodeableConcept()
-            .addCoding(new Coding().setCode("LA4048-6").setSystem("http://loinc.org")));
+            .addCoding(new Coding().setCode("LA26398-0").setSystem("http://loinc.org")));
 
     // Number reported reads
     result.addComponent(

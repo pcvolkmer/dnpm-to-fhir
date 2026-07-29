@@ -4922,7 +4922,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -5064,7 +5064,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -5204,7 +5204,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -5346,7 +5346,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -5488,7 +5488,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -5630,7 +5630,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -5772,7 +5772,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -5914,7 +5914,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -6044,7 +6044,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -6174,7 +6174,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -6304,7 +6304,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -6434,7 +6434,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -6564,7 +6564,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -6694,7 +6694,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -6824,7 +6824,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
@@ -6954,7 +6954,7 @@
       "method": {
         "coding": [ {
           "system": "http://loinc.org",
-          "code": "LA4048-6"
+          "code": "LA26398-0"
         } ]
       },
       "component": [ {
