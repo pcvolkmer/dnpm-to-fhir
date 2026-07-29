@@ -27,19 +27,19 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class RnaFusionMapperTest extends DnpmToFhirTest {
+class DnaFusionMapperTest extends DnpmToFhirTest {
 
   @ParameterizedTest
-  @ValueSource(strings = {"rnafusion.json"})
-  void shouldMapRnaFusionVariant(String filename) throws IOException {
+  @ValueSource(strings = {"dnafusion.json"})
+  void shouldMapDnaFusionVariant(String filename) throws IOException {
     var inputStream =
         Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(filename));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    final var mapper = new RnaFusionMapper();
+    final var mapper = new DnaFusionMapper();
 
     var fhir =
-        mtb.getNgsReports().get(0).getResults().getRnaFusions().stream()
+        mtb.getNgsReports().get(0).getResults().getDnaFusions().stream()
             .map(mapper::map)
             .collect(Collectors.toList());
 
