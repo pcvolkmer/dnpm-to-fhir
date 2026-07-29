@@ -1,0 +1,43 @@
+{
+  "ngsReports": [
+    {
+      "results": {
+        "dnaFusions": [
+          {
+            "id": "73aab2c8-83e1-41b0-99c6-7739738d56c2",
+            "patient": {
+              "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
+              "type": "Patient"
+            },
+            "localization": [
+              {
+                "code": "intronic",
+                "display": "Intronic",
+                "system": "dnpm-dip/variant/localization"
+              }
+            ],
+            "fusionPartner5prime": {
+              "chromosome": "chr15",
+              "gene": {
+                "code": "HGNC:6973",
+                "display": "MDM2",
+                "system": "https://www.genenames.org/"
+              },
+              "position": 734
+            },
+            "fusionPartner3prime": {
+              "chromosome": "chr21",
+              "gene": {
+                "code": "HGNC:1097",
+                "display": "BRAF",
+                "system": "https://www.genenames.org/"
+              },
+              "position": 91
+            },
+            "reportedNumReads": 6
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -2,11 +2,11 @@
   "resourceType": "Observation",
   "meta": {
     "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
-    "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-rna-fusion" ]
+    "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-dna-fusion" ]
   },
   "identifier": [ {
     "system": "https://fhir.diz.uni-marburg.de/sid/observation-id",
-    "value": "4f9a6477-a191-4be9-b724-963e40007a2d_ngsrnafusion"
+    "value": "73aab2c8-83e1-41b0-99c6-7739738d56c2_ngsdnafusion"
   } ],
   "status": "final",
   "category": [ {
@@ -21,17 +21,48 @@
       "code": "GE"
     } ]
   } ],
+  "code": {
+    "coding": [ {
+      "system": "http://loinc.org",
+      "code": "69548-6",
+      "display": "Genetic variant assessment"
+    } ]
+  },
   "subject": {
     "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
   },
   "method": {
     "coding": [ {
       "system": "http://loinc.org",
-      "code": "LA26398-0",
-      "display": "Sequencing"
+      "code": "LA4048-6"
     } ]
   },
   "component": [ {
+    "code": {
+      "coding": [ {
+        "system": "http://loinc.org",
+        "code": "82121-5"
+      } ]
+    },
+    "valueQuantity": {
+      "value": 6
+    }
+  }, {
+    "code": {
+      "coding": [ {
+        "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
+        "code": "five-prime-chromosome",
+        "display": "Five Prime Chromosome"
+      } ]
+    },
+    "valueCodeableConcept": {
+      "coding": [ {
+        "system": "http://loinc.org",
+        "code": "LA21268-0",
+        "display": "Chromosome 15"
+      } ]
+    }
+  }, {
     "code": {
       "coding": [ {
         "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
@@ -42,8 +73,8 @@
     "valueCodeableConcept": {
       "coding": [ {
         "system": "https://www.genenames.org/",
-        "code": "HGNC:5173",
-        "display": "HRAS"
+        "code": "HGNC:6973",
+        "display": "MDM2"
       } ]
     }
   }, {
@@ -55,17 +86,23 @@
       } ]
     },
     "valueQuantity": {
-      "value": 712
+      "value": 734
     }
   }, {
     "code": {
       "coding": [ {
         "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
-        "code": "five-prime-strand",
-        "display": "Five Prime Strand"
+        "code": "three-prime-chromosome",
+        "display": "Three Prime Chromosome"
       } ]
     },
-    "valueString": "+"
+    "valueCodeableConcept": {
+      "coding": [ {
+        "system": "http://loinc.org",
+        "code": "LA21274-8",
+        "display": "Chromosome 21"
+      } ]
+    }
   }, {
     "code": {
       "coding": [ {
@@ -77,8 +114,8 @@
     "valueCodeableConcept": {
       "coding": [ {
         "system": "https://www.genenames.org/",
-        "code": "HGNC:18615",
-        "display": "BRAFP1"
+        "code": "HGNC:1097",
+        "display": "BRAF"
       } ]
     }
   }, {
@@ -90,16 +127,7 @@
       } ]
     },
     "valueQuantity": {
-      "value": 108
+      "value": 91
     }
-  }, {
-    "code": {
-      "coding": [ {
-        "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",
-        "code": "three-prime-strand",
-        "display": "Three Prime Strand"
-      } ]
-    },
-    "valueString": "+"
   } ]
 }
