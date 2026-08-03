@@ -31,6 +31,8 @@ import dev.pcvolkmer.onco.datamapper.fhir.careplan.TherapieempfehlungMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.careplan.TherapieplanMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.diagnosis.*;
 import dev.pcvolkmer.onco.datamapper.fhir.ngs.*;
+import dev.pcvolkmer.onco.datamapper.fhir.pathology.IhcMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.pathology.MolekularPathologieBefundMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmMMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmNMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmTMapper;
