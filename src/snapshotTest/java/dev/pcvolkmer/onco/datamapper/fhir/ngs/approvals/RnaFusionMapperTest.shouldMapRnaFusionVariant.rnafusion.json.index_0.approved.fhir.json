@@ -21,17 +21,36 @@
       "code": "GE"
     } ]
   } ],
+  "code": {
+    "coding": [ {
+      "system": "http://loinc.org",
+      "code": "69548-6",
+      "display": "Genetic variant assessment"
+    } ]
+  },
   "subject": {
     "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
   },
   "method": {
     "coding": [ {
       "system": "http://loinc.org",
-      "code": "LA26398-0",
-      "display": "Sequencing"
+      "code": "LA26398-0"
     } ]
   },
   "component": [ {
+    "code": {
+      "coding": [ {
+        "system": "http://loinc.org",
+        "code": "82121-5",
+        "display": "Allelic read depth"
+      } ]
+    },
+    "valueQuantity": {
+      "value": 7,
+      "system": "http://unitsofmeasure.org",
+      "code": "1"
+    }
+  }, {
     "code": {
       "coding": [ {
         "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker",

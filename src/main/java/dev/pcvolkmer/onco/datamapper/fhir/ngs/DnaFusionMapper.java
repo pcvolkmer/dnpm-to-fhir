@@ -19,22 +19,22 @@
 
 package dev.pcvolkmer.onco.datamapper.fhir.ngs;
 
-import dev.pcvolkmer.mv64e.model.RnaFusion;
+import dev.pcvolkmer.mv64e.model.DnaFusion;
 import org.hl7.fhir.r4.model.*;
 
-public class RnaFusionMapper extends AbstractNgsMapper<RnaFusion> {
+public class DnaFusionMapper extends AbstractNgsMapper<DnaFusion> {
   @Override
-  protected String getPatientId(RnaFusion item) {
+  protected String getPatientId(DnaFusion item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(RnaFusion item) {
-    return String.format("%s_ngsrnafusion", item.getId());
+  protected String getId(DnaFusion item) {
+    return String.format("%s_ngsdnafusion", item.getId());
   }
 
   @Override
-  public Observation map(RnaFusion sourceItem) {
+  public Observation map(DnaFusion sourceItem) {
     var result = new Observation();
     result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem));
 
@@ -42,7 +42,7 @@ public class RnaFusionMapper extends AbstractNgsMapper<RnaFusion> {
         new Meta()
             .setSource(this.fhirMetaSource)
             .addProfile(
-                "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-rna-fusion"));
+                "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-dna-fusion"));
 
     result.setStatus(Observation.ObservationStatus.FINAL);
 
@@ -92,6 +92,20 @@ public class RnaFusionMapper extends AbstractNgsMapper<RnaFusion> {
       throw new IllegalArgumentException("No 5' fusion partner given!");
     }
 
+    // Chromosome
+    result.addComponent(
+        new Observation.ObservationComponentComponent()
+            .setCode(
+                new CodeableConcept()
+                    .addCoding(
+                        new Coding()
+                            .setCode("five-prime-chromosome")
+                            .setSystem(
+                                "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker")
+                            .setDisplay("Five Prime Chromosome")))
+            .setValue(
+                new CodeableConcept().addCoding(this.mapChromosome(fivePrime.getChromosome()))));
+
     // Gene
     result.addComponent(
         new Observation.ObservationComponentComponent()
@@ -124,24 +138,25 @@ public class RnaFusionMapper extends AbstractNgsMapper<RnaFusion> {
                             .setDisplay("Five Prime Position")))
             .setValue(new Quantity().setValue(fivePrime.getPosition())));
 
-    // Strand
+    // 3' Fusion Partner
+    final var threePrime = sourceItem.getFusionPartner3prime();
+    if (null == threePrime) {
+      throw new IllegalArgumentException("No 3' fusion partner given!");
+    }
+
+    // Chromosome
     result.addComponent(
         new Observation.ObservationComponentComponent()
             .setCode(
                 new CodeableConcept()
                     .addCoding(
                         new Coding()
-                            .setCode("five-prime-strand")
+                            .setCode("three-prime-chromosome")
                             .setSystem(
                                 "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker")
-                            .setDisplay("Five Prime Strand")))
-            .setValue(new StringType(fivePrime.getStrand().getValue())));
-
-    // 3' Fusion Partner
-    final var threePrime = sourceItem.getFusionPartner3prime();
-    if (null == threePrime) {
-      throw new IllegalArgumentException("No 3' fusion partner given!");
-    }
+                            .setDisplay("Three Prime Chromosome")))
+            .setValue(
+                new CodeableConcept().addCoding(this.mapChromosome(threePrime.getChromosome()))));
 
     // Gene
     result.addComponent(
@@ -174,19 +189,6 @@ public class RnaFusionMapper extends AbstractNgsMapper<RnaFusion> {
                                 "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker")
                             .setDisplay("Three Prime Position")))
             .setValue(new Quantity().setValue(threePrime.getPosition())));
-
-    // Strand
-    result.addComponent(
-        new Observation.ObservationComponentComponent()
-            .setCode(
-                new CodeableConcept()
-                    .addCoding(
-                        new Coding()
-                            .setCode("three-prime-strand")
-                            .setSystem(
-                                "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-molekulare-biomarker")
-                            .setDisplay("Three Prime Strand")))
-            .setValue(new StringType(threePrime.getStrand().getValue())));
 
     result.setSubject(this.getPatientReference(sourceItem));
 

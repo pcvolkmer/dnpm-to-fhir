@@ -30,12 +30,7 @@ import dev.pcvolkmer.onco.datamapper.fhir.careplan.StudieneinschlussMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.careplan.TherapieempfehlungMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.careplan.TherapieplanMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.diagnosis.*;
-import dev.pcvolkmer.onco.datamapper.fhir.ngs.CnvMapper;
-import dev.pcvolkmer.onco.datamapper.fhir.ngs.DiagnostischeImplikationMapper;
-import dev.pcvolkmer.onco.datamapper.fhir.ngs.EinfacheVarianteMapper;
-import dev.pcvolkmer.onco.datamapper.fhir.ngs.RnaFusionMapper;
-import dev.pcvolkmer.onco.datamapper.fhir.pathology.IhcMapper;
-import dev.pcvolkmer.onco.datamapper.fhir.pathology.MolekularPathologieBefundMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.ngs.*;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmMMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmNMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.tnm.TnmTMapper;
@@ -200,6 +195,12 @@ public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<
           .filter(item -> item.getResults().getCopyNumberVariants() != null)
           .flatMap(item -> item.getResults().getCopyNumberVariants().stream())
           .forEach(item -> cnvMapper.addToBundle(bundle, item));
+
+      final var dnaFusionMapper = new DnaFusionMapper();
+      ngsReports.stream()
+          .filter(item -> item.getResults().getDnaFusions() != null)
+          .flatMap(item -> item.getResults().getDnaFusions().stream())
+          .forEach(item -> dnaFusionMapper.addToBundle(bundle, item));
 
       final var rnaFusionMapper = new RnaFusionMapper();
       ngsReports.stream()

@@ -37,7 +37,7 @@ java -jar <dateiname>.jar --filename <file>
 |----------------------------------|------------------|---------------------|
 | Variante - Einfache Variante     | ⛅               | Verpflichtend       |
 | Variante - Copy Number Variant   | ⛅               | Verpflichtend       |
-| Variante - DNA-Fusion            | -                | Verpflichtend       |
+| Variante - DNA-Fusion            | ⛅               | Verpflichtend       |
 | Variante - RNA-Fusion            | ⛅               | Verpflichtend       |
 | Gen. Implikation - diagnostisch  | ⛅               |                     |
 | Gen. Implikation - therapeutisch | -                |                     |
