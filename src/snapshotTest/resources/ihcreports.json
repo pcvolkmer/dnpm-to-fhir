@@ -1,0 +1,84 @@
+{
+    "ihcReports": [
+        {
+            "id": "7f7bd217-8281-46c2-bbee-787cbe5eea6a",
+            "patient": {
+                "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
+                "type": "Patient"
+            },
+            "specimen": {
+                "id": "84aa1d75-0ba6-4266-b8e1-7a1337e44a3a",
+                "type": "TumorSpecimen"
+            },
+            "issuedOn": "2025-12-10",
+            "results": {
+                "proteinExpression": [
+                    {
+                        "id": "d431964c-45a4-40a6-b485-81693a64d1a9",
+                        "patient": {
+                            "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
+                            "type": "Patient"
+                        },
+                        "protein": {
+                            "code": "HGNC:21298",
+                            "display": "AACS",
+                            "system": "https://www.genenames.org/"
+                        },
+                        "value": {
+                            "code": "not-exp",
+                            "display": "Nicht exprimiert",
+                            "system": "dnpm-dip/mtb/ihc/protein-expression/result"
+                        }
+                    },
+                    {
+                        "id": "37e310b4-3ed2-455c-8f39-2c1ca59f2a3f",
+                        "patient": {
+                            "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
+                            "type": "Patient"
+                        },
+                        "protein": {
+                            "code": "HGNC:17635",
+                            "display": "CD274",
+                            "system": "https://www.genenames.org/"
+                        },
+                        "value": {
+                            "code": "exp",
+                            "display": "Exprimiert",
+                            "system": "dnpm-dip/mtb/ihc/protein-expression/result"
+                        },
+                        "tpsScore": 62,
+                        "cpsScore": 53,
+                        "icScore": {
+                            "code": "1",
+                            "display": ">= 1%",
+                            "system": "dnpm-dip/mtb/ihc/protein-expression/ic-score"
+                        },
+                        "tcScore": {
+                            "code": "3",
+                            "display": ">= 10%",
+                            "system": "dnpm-dip/mtb/ihc/protein-expression/tc-score"
+                        }
+                    },
+                    {
+                        "id": "6700b0b2-cc67-4711-aa12-04ecceb92bb6",
+                        "patient": {
+                            "id": "4ba7adb6-ee5a-40d5-89fe-670cb6af86c6",
+                            "type": "Patient"
+                        },
+                        "protein": {
+                            "code": "HGNC:3430",
+                            "display": "ERBB2",
+                            "system": "https://www.genenames.org/"
+                        },
+                        "value": {
+                            "code": "3+",
+                            "display": "3+",
+                            "system": "dnpm-dip/mtb/ihc/protein-expression/result"
+                        }
+                    }
+                ],
+                "msiMmr": []
+            }
+        }
+    ]
+}

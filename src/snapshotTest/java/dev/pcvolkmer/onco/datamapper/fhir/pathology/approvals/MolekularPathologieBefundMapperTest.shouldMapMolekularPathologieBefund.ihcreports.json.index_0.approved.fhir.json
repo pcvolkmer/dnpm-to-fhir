@@ -1,0 +1,33 @@
+{
+  "resourceType": "DiagnosticReport",
+  "meta": {
+    "source": "https://fhir.diz.uni-marburg.de/data-source/dnpm",
+    "profile": [ "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-molecular-pathology-report" ]
+  },
+  "identifier": [ {
+    "system": "https://fhir.diz.uni-marburg.de/sid/diagnostic-report-id",
+    "value": "7f7bd217-8281-46c2-bbee-787cbe5eea6a_molecular-pathology-report"
+  } ],
+  "status": "final",
+  "code": {
+    "coding": [ {
+      "system": "http://loinc.org",
+      "code": "60568-3",
+      "display": "Pathology synoptic report"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient?identifier=https://fhir.diz.uni-marburg.de/sid/patient-id|4ba7adb6-ee5a-40d5-89fe-670cb6af86c6"
+  },
+  "issued": "2025-12-10T00:00:00.000+01:00",
+  "specimen": [ {
+    "reference": "Specimen?identifier=https://fhir.diz.uni-marburg.de/sid/specimen-id|84aa1d75-0ba6-4266-b8e1-7a1337e44a3a"
+  } ],
+  "result": [ {
+    "reference": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|d431964c-45a4-40a6-b485-81693a64d1a9_ihc"
+  }, {
+    "reference": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|37e310b4-3ed2-455c-8f39-2c1ca59f2a3f_ihc"
+  }, {
+    "reference": "Observation?identifier=https://fhir.diz.uni-marburg.de/sid/observation-id|6700b0b2-cc67-4711-aa12-04ecceb92bb6_ihc"
+  } ]
+}
