@@ -11,14 +11,15 @@ plugins {
 group = "dev.pcvolkmer.onco"
 version = "0.1.0-SNAPSHOT"
 
+val mtbModel by extra ("0.5.0")
+
+// Min versions as required by Onkostar
 val commonsCli by extra("1.10.0")
 val commonsIo by extra("2.22.0")
-val mtbModel by extra ("0.4.3")
 val slf4j by extra("2.0.17")
 val hapiFhirVersion by extra("7.6.1")
 
 // Test dependencies
-
 val junit by extra("5.14.4")
 val assertj by extra("3.27.7")
 val approvaltests by extra("31.0.0")
