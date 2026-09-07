@@ -20,6 +20,7 @@
 
 package dev.pcvolkmer.onco.datamapper.fhir;
 
+import ca.uhn.fhir.context.FhirContext;
 import dev.pcvolkmer.mv64e.model.Converter;
 import java.io.FileInputStream;
 import java.io.PrintWriter;
@@ -56,12 +57,15 @@ public class MappingApplication {
       var dnpmJson = IOUtils.toString(fis, StandardCharsets.UTF_8);
       var dnpmData = Converter.fromJsonString(dnpmJson);
 
-      var json = Converter.toJsonString(dnpmData);
+      var mapper = PatientRecordMapper.defaultInstance();
+      var fhirJson =
+          FhirContext.forR4().newJsonParser().encodeToString(mapper.mapToBundle(dnpmData));
+
       var writer =
           new PrintWriter(
               Path.of(parsedCliArgs.getOptionValue("filename").replaceAll(".json", ".fhir.json"))
                   .toFile());
-      writer.println(json);
+      writer.println(fhirJson);
       writer.close();
     } else {
       System.err.println("Keine Datei angegeben. Verwenden Sie --filename <dateiname>.json");

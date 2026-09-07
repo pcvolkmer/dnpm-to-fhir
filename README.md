@@ -10,6 +10,18 @@ Die Jar-Datei enthält alle Abhängigkeiten und lässt sich mit folgendem Befehl
 java -jar <dateiname>.jar --filename <file> 
 ```
 
+### Als Library
+
+```java
+var dnpmJsonString = IOUtils.toString(fis, StandardCharsets.UTF_8);
+var dnpmDataObject = Converter.fromJsonString(dnpmJsonString);
+
+var mapper = PatientRecordMapper.defaultInstance();
+var fhirJsonString = FhirContext.forR4().newJsonParser().encodeToString(mapper.mapToBundle(dnpmDataObject));
+
+// ... do something with FHIR JSON String
+```
+
 ## Umsetzung
 
 ### MII-MTB – Bereich: Behandlungsepisode
