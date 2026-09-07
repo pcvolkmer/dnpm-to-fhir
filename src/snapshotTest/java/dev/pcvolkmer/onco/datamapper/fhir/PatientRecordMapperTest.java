@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
-class DnpmToFhirMapperTest {
+class PatientRecordMapperTest {
 
   @Test
   void shouldMapExampleMtbFile() throws IOException {
@@ -34,7 +34,7 @@ class DnpmToFhirMapperTest {
         Objects.requireNonNull(
             this.getClass().getClassLoader().getResourceAsStream("mv64e-mtb-fake-patient.json"));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
-    var fhir = DnpmToFhirMapper.mapToBundle(mtb);
+    var fhir = PatientRecordMapper.defaultInstance().mapToBundle(mtb);
     verify(fhir, "mv64e-mtb-fake-patient.json");
   }
 }
