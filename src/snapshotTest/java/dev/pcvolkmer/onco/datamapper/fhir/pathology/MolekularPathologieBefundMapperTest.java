@@ -21,6 +21,7 @@ package dev.pcvolkmer.onco.datamapper.fhir.pathology;
 
 import dev.pcvolkmer.mv64e.model.Converter;
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirTest;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
@@ -37,8 +38,8 @@ class MolekularPathologieBefundMapperTest extends DnpmToFhirTest {
 
       var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-      var ihcMapper = new IhcMapper();
-      var mapper = new MolekularPathologieBefundMapper(ihcMapper);
+      var ihcMapper = new IhcMapper(new DizUniMrReferenceBuilder());
+      var mapper = new MolekularPathologieBefundMapper(new DizUniMrReferenceBuilder(), ihcMapper);
 
       var fhir = mapper.map(mtb.getIhcReports().get(0));
 

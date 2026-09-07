@@ -21,6 +21,7 @@ package dev.pcvolkmer.onco.datamapper.fhir.tnm;
 
 import dev.pcvolkmer.mv64e.model.Converter;
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirTest;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Objects;
@@ -38,7 +39,7 @@ class TnmNMapperTest extends DnpmToFhirTest {
         Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(filename));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    final var mapper = new TnmNMapper();
+    final var mapper = new TnmNMapper(new DizUniMrReferenceBuilder());
 
     var fhir =
         mtb.getDiagnoses().stream()
@@ -56,7 +57,7 @@ class TnmNMapperTest extends DnpmToFhirTest {
         Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(filename));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    final var mapper = new TnmNMapper();
+    final var mapper = new TnmNMapper(new DizUniMrReferenceBuilder());
 
     var fhir = new Bundle();
     mtb.getDiagnoses().forEach(dia -> mapper.addManyToBundle(fhir, dia));

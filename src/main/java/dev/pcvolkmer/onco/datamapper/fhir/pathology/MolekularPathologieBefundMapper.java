@@ -21,6 +21,8 @@ package dev.pcvolkmer.onco.datamapper.fhir.pathology;
 
 import dev.pcvolkmer.mv64e.model.IhcReport;
 import dev.pcvolkmer.onco.datamapper.fhir.DiagnosticReportMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.SpecimenMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import java.util.Objects;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
@@ -32,17 +34,18 @@ public class MolekularPathologieBefundMapper extends DiagnosticReportMapper<IhcR
 
   private final IhcMapper ihcMapper;
 
-  public MolekularPathologieBefundMapper(IhcMapper ihcMapper) {
+  public MolekularPathologieBefundMapper(ReferenceBuilder referenceBuilder, IhcMapper ihcMapper) {
+    super(referenceBuilder);
     this.ihcMapper = Objects.requireNonNull(ihcMapper);
   }
 
   @Override
-  protected String getPatientId(IhcReport item) {
+  public String getPatientId(IhcReport item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(IhcReport item) {
+  public String getId(IhcReport item) {
     return String.format("%s_molecular-pathology-report", item.getId());
   }
 
@@ -84,10 +87,7 @@ public class MolekularPathologieBefundMapper extends DiagnosticReportMapper<IhcR
   }
 
   private Reference getSpecimenReference(IhcReport sourceItem) {
-    return new Reference()
-        .setReference(
-            String.format(
-                "Specimen?identifier=%s/sid/specimen-id|%s",
-                this.fhirSystemBaseUrl, sourceItem.getSpecimen().getId()));
+    return this.referenceBuilder.getReference(
+        sourceItem.getSpecimen().getId(), new SpecimenMapper(this.referenceBuilder));
   }
 }

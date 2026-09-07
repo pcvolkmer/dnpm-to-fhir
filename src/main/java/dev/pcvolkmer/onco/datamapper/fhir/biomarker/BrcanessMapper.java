@@ -21,16 +21,21 @@ package dev.pcvolkmer.onco.datamapper.fhir.biomarker;
 
 import dev.pcvolkmer.mv64e.model.Brcaness;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.*;
 
 public class BrcanessMapper extends ObservationMapper<Brcaness> {
+  public BrcanessMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(Brcaness item) {
+  public String getPatientId(Brcaness item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(Brcaness item) {
+  public String getId(Brcaness item) {
     return String.format("%s_brcaness", item.getId());
   }
 

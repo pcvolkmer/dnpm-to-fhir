@@ -22,18 +22,23 @@ package dev.pcvolkmer.onco.datamapper.fhir.careplan;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import dev.pcvolkmer.mv64e.model.MtbMedicationRecommendation;
 import dev.pcvolkmer.onco.datamapper.fhir.MedicationRequestMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import dev.pcvolkmer.onco.datamapper.fhir.diagnosis.MtbDiagnoseMapper;
 import org.hl7.fhir.r4.model.*;
 
 public class TherapieempfehlungMapper extends MedicationRequestMapper<MtbMedicationRecommendation> {
 
+  public TherapieempfehlungMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(MtbMedicationRecommendation item) {
+  public String getPatientId(MtbMedicationRecommendation item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(MtbMedicationRecommendation item) {
+  public String getId(MtbMedicationRecommendation item) {
     return String.format("%s_medicationrequest", item.getId());
   }
 
@@ -96,9 +101,11 @@ public class TherapieempfehlungMapper extends MedicationRequestMapper<MtbMedicat
       final var reasonReference =
           new Reference()
               .setReference(
-                  String.format(
-                      "Condition?identifier=%s|%s_mtbdiagnose",
-                      new MtbDiagnoseMapper().getSystem(), reason.getId()));
+                  this.referenceBuilder
+                      .getReference(
+                          reason.getId() + "_mtbdiagnose",
+                          new MtbDiagnoseMapper(this.referenceBuilder))
+                      .getReference());
       result.addReasonReference(reasonReference);
     }
 

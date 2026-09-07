@@ -19,22 +19,39 @@
 
 package dev.pcvolkmer.onco.datamapper.fhir;
 
+import dev.pcvolkmer.mv64e.model.TumorSpecimen;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
-import org.hl7.fhir.r4.model.CarePlan;
+import org.hl7.fhir.r4.model.Specimen;
+import org.jspecify.annotations.Nullable;
 
-public abstract class CarePlanMapper<S> extends DnpmToFhirMapper<S, CarePlan> {
+public class SpecimenMapper extends DnpmToFhirMapper<TumorSpecimen, Specimen> {
 
-  protected CarePlanMapper(ReferenceBuilder referenceBuilder) {
+  public SpecimenMapper(ReferenceBuilder referenceBuilder) {
     super(referenceBuilder);
   }
 
   @Override
+  public String getPatientId(TumorSpecimen item) {
+    return item.getPatient().getId();
+  }
+
+  @Override
+  public String getId(TumorSpecimen item) {
+    return item.getId();
+  }
+
+  @Override
   public String getFhirResourceType() {
-    return "CarePlan";
+    return "Specimen";
+  }
+
+  @Override
+  public @Nullable Specimen map(TumorSpecimen sourceItem) {
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   @Override
   public String getSystem() {
-    return String.format("%s/sid/careplan-id", this.fhirSystemBaseUrl);
+    return String.format("%s/sid/specimen-id", this.fhirSystemBaseUrl);
   }
 }

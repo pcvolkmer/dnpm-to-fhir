@@ -19,13 +19,18 @@
 
 package dev.pcvolkmer.onco.datamapper.fhir;
 
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.MedicationRequest;
 
 public abstract class MedicationRequestMapper<S> extends DnpmToFhirMapper<S, MedicationRequest> {
 
+  protected MedicationRequestMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getRequestUrl(S item) {
-    return String.format("MedicationRequest?identifier=%s|%s", this.getSystem(), this.getId(item));
+  public String getFhirResourceType() {
+    return "MedicationRequest";
   }
 
   @Override

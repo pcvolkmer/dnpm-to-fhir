@@ -23,6 +23,7 @@ import dev.pcvolkmer.mv64e.model.IhcReport;
 import dev.pcvolkmer.mv64e.model.ProteinExpression;
 import dev.pcvolkmer.onco.datamapper.fhir.ManyMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
@@ -32,13 +33,17 @@ import org.hl7.fhir.r4.model.*;
 public class IhcMapper extends ObservationMapper<ProteinExpression>
     implements ManyMapper<IhcReport, Observation> {
 
+  public IhcMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(ProteinExpression item) {
+  public String getPatientId(ProteinExpression item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(ProteinExpression item) {
+  public String getId(ProteinExpression item) {
     return String.format("%s_ihc", item.getId());
   }
 

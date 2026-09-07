@@ -22,18 +22,23 @@ package dev.pcvolkmer.onco.datamapper.fhir.diagnosis;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import dev.pcvolkmer.mv64e.model.MtbDiagnosis;
 import dev.pcvolkmer.onco.datamapper.fhir.ConditionMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import java.util.List;
 import org.hl7.fhir.r4.model.*;
 
 public class MtbDiagnoseMapper extends ConditionMapper<MtbDiagnosis> {
 
+  public MtbDiagnoseMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(MtbDiagnosis item) {
+  public String getPatientId(MtbDiagnosis item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(MtbDiagnosis item) {
+  public String getId(MtbDiagnosis item) {
     return String.format("%s_mtbdiagnose", item.getId());
   }
 
@@ -58,7 +63,7 @@ public class MtbDiagnoseMapper extends ConditionMapper<MtbDiagnosis> {
                         .setCode(diagnose.getCode().getCode())
                         .setDisplay(diagnose.getCode().getDisplay()))));
 
-    condition.setSubject(this.getPatientReference(diagnose));
+    condition.setSubject(this.referenceBuilder.getPatientReference(diagnose, this));
 
     if (null != diagnose.getRecordedOn()) {
       final var dateTimeType = new DateTimeType(diagnose.getRecordedOn());

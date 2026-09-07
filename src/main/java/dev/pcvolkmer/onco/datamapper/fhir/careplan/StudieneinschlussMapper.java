@@ -22,18 +22,23 @@ package dev.pcvolkmer.onco.datamapper.fhir.careplan;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import dev.pcvolkmer.mv64e.model.MtbStudyEnrollmentRecommendation;
 import dev.pcvolkmer.onco.datamapper.fhir.ServiceRequestMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.*;
 
 public class StudieneinschlussMapper
     extends ServiceRequestMapper<MtbStudyEnrollmentRecommendation> {
 
+  public StudieneinschlussMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(MtbStudyEnrollmentRecommendation item) {
+  public String getPatientId(MtbStudyEnrollmentRecommendation item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(MtbStudyEnrollmentRecommendation item) {
+  public String getId(MtbStudyEnrollmentRecommendation item) {
     return String.format("%s_studieneinschluss", item.getId());
   }
 

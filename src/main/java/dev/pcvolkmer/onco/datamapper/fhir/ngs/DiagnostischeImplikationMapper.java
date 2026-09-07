@@ -1,6 +1,7 @@
 package dev.pcvolkmer.onco.datamapper.fhir.ngs;
 
 import dev.pcvolkmer.mv64e.model.Snv;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import java.util.Objects;
 import org.hl7.fhir.r4.model.*;
 
@@ -8,7 +9,9 @@ public class DiagnostischeImplikationMapper extends AbstractNgsMapper<Snv> {
 
   private final EinfacheVarianteMapper einfacheVarianteMapper;
 
-  public DiagnostischeImplikationMapper(EinfacheVarianteMapper einfacheVarianteMapper) {
+  public DiagnostischeImplikationMapper(
+      ReferenceBuilder referenceBuilder, EinfacheVarianteMapper einfacheVarianteMapper) {
+    super(referenceBuilder);
     this.einfacheVarianteMapper =
         Objects.requireNonNull(einfacheVarianteMapper, "EinfacheVarianteMapper must not be null");
   }
@@ -18,12 +21,12 @@ public class DiagnostischeImplikationMapper extends AbstractNgsMapper<Snv> {
   }
 
   @Override
-  protected String getPatientId(Snv item) {
+  public String getPatientId(Snv item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(Snv item) {
+  public String getId(Snv item) {
     return String.format("%s_ngsdi", item.getId());
   }
 

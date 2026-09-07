@@ -22,17 +22,22 @@ package dev.pcvolkmer.onco.datamapper.fhir;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import dev.pcvolkmer.mv64e.model.EcogCoding;
 import dev.pcvolkmer.mv64e.model.PerformanceStatus;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import java.util.List;
 import org.hl7.fhir.r4.model.*;
 
 public class EcogMapper extends ObservationMapper<PerformanceStatus> {
+  public EcogMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(PerformanceStatus item) {
+  public String getPatientId(PerformanceStatus item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(PerformanceStatus item) {
+  public String getId(PerformanceStatus item) {
     return String.format("%s_ecog", item.getId());
   }
 

@@ -20,16 +20,21 @@
 package dev.pcvolkmer.onco.datamapper.fhir.ngs;
 
 import dev.pcvolkmer.mv64e.model.DnaFusion;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.*;
 
 public class DnaFusionMapper extends AbstractNgsMapper<DnaFusion> {
+  public DnaFusionMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(DnaFusion item) {
+  public String getPatientId(DnaFusion item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(DnaFusion item) {
+  public String getId(DnaFusion item) {
     return String.format("%s_ngsdnafusion", item.getId());
   }
 

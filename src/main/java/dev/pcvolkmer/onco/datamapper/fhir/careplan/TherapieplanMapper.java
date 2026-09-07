@@ -22,18 +22,24 @@ package dev.pcvolkmer.onco.datamapper.fhir.careplan;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import dev.pcvolkmer.mv64e.model.MtbCarePlan;
 import dev.pcvolkmer.onco.datamapper.fhir.CarePlanMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.diagnosis.MtbDiagnoseMapper;
 import java.util.List;
 import org.hl7.fhir.r4.model.*;
 
 public class TherapieplanMapper extends CarePlanMapper<MtbCarePlan> {
 
+  public TherapieplanMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(MtbCarePlan item) {
+  public String getPatientId(MtbCarePlan item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(MtbCarePlan item) {
+  public String getId(MtbCarePlan item) {
     return String.format("%s_careplan", item.getId());
   }
 
@@ -75,9 +81,9 @@ public class TherapieplanMapper extends CarePlanMapper<MtbCarePlan> {
       result.addAddresses(
           new Reference()
               .setReference(
-                  String.format(
-                      "Condition?identifier=%s/sid/condition-id|%s",
-                      this.fhirSystemBaseUrl, reasonId)));
+                  this.referenceBuilder
+                      .getReference(reasonId, new MtbDiagnoseMapper(this.referenceBuilder))
+                      .getReference()));
     }
 
     // TODO Add other planned activities
@@ -87,7 +93,8 @@ public class TherapieplanMapper extends CarePlanMapper<MtbCarePlan> {
           item ->
               result.addActivity(
                   new CarePlan.CarePlanActivityComponent()
-                      .setReference(new TherapieempfehlungMapper().getReference(item))));
+                      .setReference(
+                          new TherapieempfehlungMapper(this.referenceBuilder).getReference(item))));
     }
 
     final var geneticCounselingRecommendation = sourceItem.getGeneticCounselingRecommendation();
@@ -95,7 +102,7 @@ public class TherapieplanMapper extends CarePlanMapper<MtbCarePlan> {
       result.addActivity(
           new CarePlan.CarePlanActivityComponent()
               .setReference(
-                  new HumangenetischeBeratungMapper()
+                  new HumangenetischeBeratungMapper(this.referenceBuilder)
                       .getReference(geneticCounselingRecommendation)));
     }
 
@@ -105,7 +112,8 @@ public class TherapieplanMapper extends CarePlanMapper<MtbCarePlan> {
           item ->
               result.addActivity(
                   new CarePlan.CarePlanActivityComponent()
-                      .setReference(new StudieneinschlussMapper().getReference(item))));
+                      .setReference(
+                          new StudieneinschlussMapper(this.referenceBuilder).getReference(item))));
     }
 
     return result;

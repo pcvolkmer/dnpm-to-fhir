@@ -19,13 +19,18 @@
 
 package dev.pcvolkmer.onco.datamapper.fhir;
 
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.Observation;
 
 public abstract class ObservationMapper<S> extends DnpmToFhirMapper<S, Observation> {
 
+  protected ObservationMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getRequestUrl(S item) {
-    return String.format("Observation?identifier=%s|%s", this.getSystem(), this.getId(item));
+  public String getFhirResourceType() {
+    return "Observation";
   }
 
   @Override

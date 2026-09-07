@@ -24,6 +24,7 @@ import dev.pcvolkmer.mv64e.model.SomaticNgsReport;
 import dev.pcvolkmer.mv64e.model.SomaticNgsReportResults;
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirTest;
 import dev.pcvolkmer.onco.datamapper.fhir.biomarker.HrdScoreMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -39,7 +40,7 @@ class HrdScoreMapperTest extends DnpmToFhirTest {
         Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(filename));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    final var mapper = new HrdScoreMapper();
+    final var mapper = new HrdScoreMapper(new DizUniMrReferenceBuilder());
 
     var fhir =
         mtb.getNgsReports().stream()

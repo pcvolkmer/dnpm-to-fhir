@@ -21,6 +21,7 @@ package dev.pcvolkmer.onco.datamapper.fhir.pathology;
 
 import dev.pcvolkmer.mv64e.model.Converter;
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirTest;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
 import java.util.Objects;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -35,7 +36,7 @@ class IhcMapperTest extends DnpmToFhirTest {
         Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(filename));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    final var mapper = new IhcMapper();
+    final var mapper = new IhcMapper(new DizUniMrReferenceBuilder());
 
     var fhir = mapper.mapToMany(mtb.getIhcReports().get(0));
 

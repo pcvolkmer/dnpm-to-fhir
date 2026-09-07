@@ -24,6 +24,7 @@ import dev.pcvolkmer.mv64e.model.MtbDiagnosis;
 import dev.pcvolkmer.mv64e.model.TumorGrading;
 import dev.pcvolkmer.onco.datamapper.fhir.ManyMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -33,13 +34,17 @@ import org.jspecify.annotations.Nullable;
 
 public class WhoGradZnsMapper extends ObservationMapper<TumorGrading>
     implements ManyMapper<MtbDiagnosis, Observation> {
+  public WhoGradZnsMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(TumorGrading item) {
+  public String getPatientId(TumorGrading item) {
     throw new UnsupportedOperationException("Not implemented");
   }
 
   @Override
-  protected String getId(TumorGrading item) {
+  public String getId(TumorGrading item) {
     throw new UnsupportedOperationException("Not implemented");
   }
 
@@ -105,20 +110,17 @@ public class WhoGradZnsMapper extends ObservationMapper<TumorGrading>
   @Override
   public void addManyToBundle(Bundle bundle, MtbDiagnosis sourceItem) {
     final var patientReference =
-        new Reference()
-            .setReference(
-                String.format(
-                    "Patient?identifier=%s/sid/patient-id|%s",
-                    this.fhirSystemBaseUrl, sourceItem.getPatient().getId()));
+        this.referenceBuilder.getPatientReference(sourceItem.getPatient().getId(), this);
 
     final var newItems = this.mapToMany(sourceItem);
     IntStream.range(0, newItems.size())
         .forEach(
             idx -> {
               final var requestUrl =
-                  String.format(
-                      "Observation?identifier=%s|%s_znsgrading-%d",
-                      this.getSystem(), sourceItem.getId(), idx);
+                  this.referenceBuilder
+                      .getReference(
+                          String.format("%s_%s-%d", sourceItem.getId(), "znsgrading", idx), this)
+                      .getReference();
 
               final var newItem = newItems.get(idx);
               newItem.setSubject(patientReference);
