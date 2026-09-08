@@ -20,16 +20,21 @@
 package dev.pcvolkmer.onco.datamapper.fhir.ngs;
 
 import dev.pcvolkmer.mv64e.model.RnaFusion;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.*;
 
 public class RnaFusionMapper extends AbstractNgsMapper<RnaFusion> {
+  public RnaFusionMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(RnaFusion item) {
+  public String getPatientId(RnaFusion item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(RnaFusion item) {
+  public String getId(RnaFusion item) {
     return String.format("%s_ngsrnafusion", item.getId());
   }
 

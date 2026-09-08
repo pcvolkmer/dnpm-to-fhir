@@ -19,13 +19,18 @@
 
 package dev.pcvolkmer.onco.datamapper.fhir;
 
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.Condition;
 
 public abstract class ConditionMapper<S> extends DnpmToFhirMapper<S, Condition> {
 
+  protected ConditionMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getRequestUrl(S item) {
-    return String.format("Condition?identifier=%s|%s", this.getSystem(), this.getId(item));
+  public String getFhirResourceType() {
+    return "Condition";
   }
 
   @Override

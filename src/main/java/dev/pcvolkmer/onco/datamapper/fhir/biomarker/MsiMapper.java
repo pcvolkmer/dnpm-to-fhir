@@ -22,16 +22,21 @@ package dev.pcvolkmer.onco.datamapper.fhir.biomarker;
 import dev.pcvolkmer.mv64e.model.Msi;
 import dev.pcvolkmer.mv64e.model.MsiInterpretationCoding;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.*;
 
 public class MsiMapper extends ObservationMapper<Msi> {
+  public MsiMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(Msi item) {
+  public String getPatientId(Msi item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(Msi item) {
+  public String getId(Msi item) {
     return String.format("%s_msi", item.getId());
   }
 

@@ -20,9 +20,14 @@
 package dev.pcvolkmer.onco.datamapper.fhir.tnm;
 
 import dev.pcvolkmer.mv64e.model.TumorStagingTnmClassification;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.Coding;
 
 public class TnmNMapper extends AbstractTnmMapper {
+  public TnmNMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
   protected String idSuffix() {
     return "tnmn";

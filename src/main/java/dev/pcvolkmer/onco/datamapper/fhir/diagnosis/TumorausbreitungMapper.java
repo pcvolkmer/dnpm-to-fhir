@@ -24,6 +24,7 @@ import dev.pcvolkmer.mv64e.model.MtbDiagnosis;
 import dev.pcvolkmer.mv64e.model.TumorStaging;
 import dev.pcvolkmer.onco.datamapper.fhir.ManyMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -32,13 +33,17 @@ import org.hl7.fhir.r4.model.*;
 
 public class TumorausbreitungMapper extends ObservationMapper<TumorStaging>
     implements ManyMapper<MtbDiagnosis, Observation> {
+  public TumorausbreitungMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(TumorStaging item) {
+  public String getPatientId(TumorStaging item) {
     throw new UnsupportedOperationException("Not implemented");
   }
 
   @Override
-  protected String getId(TumorStaging item) {
+  public String getId(TumorStaging item) {
     throw new UnsupportedOperationException("Not implemented");
   }
 
@@ -110,20 +115,17 @@ public class TumorausbreitungMapper extends ObservationMapper<TumorStaging>
   @Override
   public void addManyToBundle(Bundle bundle, MtbDiagnosis sourceItem) {
     final var patientReference =
-        new Reference()
-            .setReference(
-                String.format(
-                    "Patient?identifier=%s/sid/patient-id|%s",
-                    this.fhirSystemBaseUrl, sourceItem.getPatient().getId()));
+        this.referenceBuilder.getPatientReference(sourceItem.getPatient().getId(), this);
 
     final var newItems = this.mapToMany(sourceItem);
     IntStream.range(0, newItems.size())
         .forEach(
             idx -> {
               final var requestUrl =
-                  String.format(
-                      "Observation?identifier=%s|%s_tumorstaging-%d",
-                      this.getSystem(), sourceItem.getId(), idx);
+                  this.referenceBuilder
+                      .getReference(
+                          String.format("%s_%s-%d", sourceItem.getId(), "tumorstaging", idx), this)
+                      .getReference();
 
               final var newItem = newItems.get(idx);
               newItem.setSubject(patientReference);

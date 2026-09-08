@@ -26,6 +26,7 @@ import dev.pcvolkmer.mv64e.model.TumorStagingMethodCoding;
 import dev.pcvolkmer.mv64e.model.TumorStagingTnmClassification;
 import dev.pcvolkmer.onco.datamapper.fhir.ManyMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -35,13 +36,17 @@ import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractTnmMapper extends ObservationMapper<TumorStaging>
     implements ManyMapper<MtbDiagnosis, Observation> {
+  public AbstractTnmMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(TumorStaging item) {
+  public String getPatientId(TumorStaging item) {
     throw new UnsupportedOperationException("Not implemented");
   }
 
   @Override
-  protected String getId(TumorStaging item) {
+  public String getId(TumorStaging item) {
     throw new UnsupportedOperationException("Not implemented");
   }
 
@@ -115,20 +120,17 @@ public abstract class AbstractTnmMapper extends ObservationMapper<TumorStaging>
   @Override
   public void addManyToBundle(Bundle bundle, MtbDiagnosis sourceItem) {
     final var patientReference =
-        new Reference()
-            .setReference(
-                String.format(
-                    "Patient?identifier=%s/sid/patient-id|%s",
-                    this.fhirSystemBaseUrl, sourceItem.getPatient().getId()));
+        this.referenceBuilder.getPatientReference(sourceItem.getPatient().getId(), this);
 
     final var newItems = this.mapToMany(sourceItem);
     IntStream.range(0, newItems.size())
         .forEach(
             idx -> {
               final var requestUrl =
-                  String.format(
-                      "Observation?identifier=%s|%s_%s-%d",
-                      this.getSystem(), sourceItem.getId(), idSuffix(), idx);
+                  this.referenceBuilder
+                      .getReference(
+                          String.format("%s_%s-%d", sourceItem.getId(), idSuffix(), idx), this)
+                      .getReference();
 
               final var newItem = newItems.get(idx);
               newItem.setSubject(patientReference);

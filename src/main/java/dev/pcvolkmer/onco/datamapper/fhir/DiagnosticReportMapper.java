@@ -19,13 +19,18 @@
 
 package dev.pcvolkmer.onco.datamapper.fhir;
 
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.DiagnosticReport;
 
 public abstract class DiagnosticReportMapper<S> extends DnpmToFhirMapper<S, DiagnosticReport> {
 
+  protected DiagnosticReportMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getRequestUrl(S item) {
-    return String.format("DiagnosticReport?identifier=%s|%s", this.getSystem(), this.getId(item));
+  public String getFhirResourceType() {
+    return "DiagnosticReport";
   }
 
   @Override

@@ -25,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import dev.pcvolkmer.mv64e.model.Converter;
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirTest;
 import dev.pcvolkmer.onco.datamapper.fhir.biomarker.MsiMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -41,7 +42,7 @@ class MsiMapperTest extends DnpmToFhirTest {
         Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(filename));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    final var mapper = new MsiMapper();
+    final var mapper = new MsiMapper(new DizUniMrReferenceBuilder());
 
     var fhir = mtb.getMsiFindings().stream().map(mapper::map).collect(Collectors.toList());
 
@@ -55,7 +56,7 @@ class MsiMapperTest extends DnpmToFhirTest {
             this.getClass().getClassLoader().getResourceAsStream("msifindings-mmr.json"));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    final var mapper = new MsiMapper();
+    final var mapper = new MsiMapper(new DizUniMrReferenceBuilder());
 
     final var ex =
         assertThrows(

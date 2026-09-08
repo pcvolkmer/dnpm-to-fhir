@@ -21,6 +21,7 @@ package dev.pcvolkmer.onco.datamapper.fhir.ngs;
 
 import dev.pcvolkmer.mv64e.model.Converter;
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirTest;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -37,7 +38,10 @@ class DiagnostischeImplikationMapperTest extends DnpmToFhirTest {
 
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    var mapper = new DiagnostischeImplikationMapper(new EinfacheVarianteMapper());
+    var mapper =
+        new DiagnostischeImplikationMapper(
+            new DizUniMrReferenceBuilder(),
+            new EinfacheVarianteMapper(new DizUniMrReferenceBuilder()));
 
     var fhir =
         mtb.getNgsReports().get(0).getResults().getSimpleVariants().stream()

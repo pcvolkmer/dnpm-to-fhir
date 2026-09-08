@@ -22,18 +22,23 @@ package dev.pcvolkmer.onco.datamapper.fhir.careplan;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import dev.pcvolkmer.mv64e.model.GeneticCounselingRecommendation;
 import dev.pcvolkmer.onco.datamapper.fhir.ServiceRequestMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.*;
 
 public class HumangenetischeBeratungMapper
     extends ServiceRequestMapper<GeneticCounselingRecommendation> {
 
+  public HumangenetischeBeratungMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(GeneticCounselingRecommendation item) {
+  public String getPatientId(GeneticCounselingRecommendation item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(GeneticCounselingRecommendation item) {
+  public String getId(GeneticCounselingRecommendation item) {
     return String.format("%s_humangenberatung", item.getId());
   }
 

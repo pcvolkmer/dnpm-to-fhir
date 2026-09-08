@@ -20,16 +20,21 @@
 package dev.pcvolkmer.onco.datamapper.fhir.ngs;
 
 import dev.pcvolkmer.mv64e.model.Snv;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.*;
 
 public class EinfacheVarianteMapper extends AbstractNgsMapper<Snv> {
+  public EinfacheVarianteMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(Snv item) {
+  public String getPatientId(Snv item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(Snv item) {
+  public String getId(Snv item) {
     return String.format("%s_ngssv", item.getId());
   }
 

@@ -21,16 +21,21 @@ package dev.pcvolkmer.onco.datamapper.fhir.biomarker;
 
 import dev.pcvolkmer.mv64e.model.HrdScore;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.*;
 
 public class HrdScoreMapper extends ObservationMapper<HrdScore> {
+  public HrdScoreMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(HrdScore item) {
+  public String getPatientId(HrdScore item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(HrdScore item) {
+  public String getId(HrdScore item) {
     return String.format("%s_hrdscore", item.getId());
   }
 

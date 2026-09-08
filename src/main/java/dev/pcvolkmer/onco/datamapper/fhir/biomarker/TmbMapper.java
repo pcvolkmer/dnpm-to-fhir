@@ -21,16 +21,21 @@ package dev.pcvolkmer.onco.datamapper.fhir.biomarker;
 
 import dev.pcvolkmer.mv64e.model.Tmb;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.*;
 
 public class TmbMapper extends ObservationMapper<Tmb> {
+  public TmbMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(Tmb item) {
+  public String getPatientId(Tmb item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(Tmb item) {
+  public String getId(Tmb item) {
     return String.format("%s_tmb", item.getId());
   }
 

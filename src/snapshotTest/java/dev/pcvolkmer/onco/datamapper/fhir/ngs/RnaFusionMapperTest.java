@@ -21,6 +21,7 @@ package dev.pcvolkmer.onco.datamapper.fhir.ngs;
 
 import dev.pcvolkmer.mv64e.model.Converter;
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirTest;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -36,7 +37,7 @@ class RnaFusionMapperTest extends DnpmToFhirTest {
         Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(filename));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    final var mapper = new RnaFusionMapper();
+    final var mapper = new RnaFusionMapper(new DizUniMrReferenceBuilder());
 
     var fhir =
         mtb.getNgsReports().get(0).getResults().getRnaFusions().stream()

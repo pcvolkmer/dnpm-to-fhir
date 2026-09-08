@@ -22,6 +22,7 @@ package dev.pcvolkmer.onco.datamapper.fhir;
 import static dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirTest.verify;
 
 import dev.pcvolkmer.mv64e.model.Converter;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,17 @@ import org.junit.jupiter.api.Test;
 class PatientRecordMapperTest {
 
   @Test
-  void shouldMapExampleMtbFile() throws IOException {
+  void shouldMapExampleMtbFileUsingDizUniMrPatientReferences() throws IOException {
+    var inputStream =
+        Objects.requireNonNull(
+            this.getClass().getClassLoader().getResourceAsStream("mv64e-mtb-fake-patient.json"));
+    var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
+    var fhir = PatientRecordMapper.customInstance(new DizUniMrReferenceBuilder()).mapToBundle(mtb);
+    verify(fhir, "mv64e-mtb-fake-patient.json");
+  }
+
+  @Test
+  void shouldMapExampleMtbFileUsingDefaultPatientReferences() throws IOException {
     var inputStream =
         Objects.requireNonNull(
             this.getClass().getClassLoader().getResourceAsStream("mv64e-mtb-fake-patient.json"));

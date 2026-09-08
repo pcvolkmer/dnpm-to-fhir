@@ -19,6 +19,7 @@
 
 package dev.pcvolkmer.onco.datamapper.fhir;
 
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -36,7 +37,10 @@ public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<
 
   protected String fhirMetaSource = String.format("%s/data-source/dnpm", this.fhirSystemBaseUrl);
 
-  protected DnpmToFhirMapper() {
+  protected ReferenceBuilder referenceBuilder;
+
+  protected DnpmToFhirMapper(ReferenceBuilder referenceBuilder) {
+    this.referenceBuilder = referenceBuilder;
     try {
       md5Digest = MessageDigest.getInstance("MD5");
     } catch (NoSuchAlgorithmException e) {
@@ -44,14 +48,10 @@ public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<
     }
   }
 
-  protected abstract String getPatientId(S item);
+  public abstract String getPatientId(S item);
 
   protected Reference getPatientReference(S item) {
-    return new Reference()
-        .setReference(
-            String.format(
-                "Patient?identifier=%s/sid/patient-id|%s",
-                this.fhirSystemBaseUrl, this.getPatientId(item)));
+    return this.referenceBuilder.getPatientReference(item, this);
   }
 
   public Reference getReference(S item) {
@@ -82,7 +82,11 @@ public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<
     return String.format("urn:uuid:%s", uuid);
   }
 
-  protected abstract String getId(S item);
+  public abstract String getId(S item);
 
-  protected abstract String getRequestUrl(S item);
+  public abstract String getFhirResourceType();
+
+  protected String getRequestUrl(S item) {
+    return this.referenceBuilder.getReference(item, this).getReference();
+  }
 }

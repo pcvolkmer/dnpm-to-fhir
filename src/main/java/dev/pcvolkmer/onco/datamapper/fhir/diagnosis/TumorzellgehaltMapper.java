@@ -21,16 +21,21 @@ package dev.pcvolkmer.onco.datamapper.fhir.diagnosis;
 
 import dev.pcvolkmer.mv64e.model.HistologyReport;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.*;
 
 public class TumorzellgehaltMapper extends ObservationMapper<HistologyReport> {
+  public TumorzellgehaltMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(HistologyReport item) {
+  public String getPatientId(HistologyReport item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(HistologyReport item) {
+  public String getId(HistologyReport item) {
     return String.format("%s_tumorcellcount", item.getId());
   }
 

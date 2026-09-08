@@ -20,16 +20,21 @@
 package dev.pcvolkmer.onco.datamapper.fhir.ngs;
 
 import dev.pcvolkmer.mv64e.model.Cnv;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.*;
 
 public class CnvMapper extends AbstractNgsMapper<Cnv> {
+  public CnvMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
+
   @Override
-  protected String getPatientId(Cnv item) {
+  public String getPatientId(Cnv item) {
     return item.getPatient().getId();
   }
 
   @Override
-  protected String getId(Cnv item) {
+  public String getId(Cnv item) {
     return String.format("%s_ngscnv", item.getId());
   }
 

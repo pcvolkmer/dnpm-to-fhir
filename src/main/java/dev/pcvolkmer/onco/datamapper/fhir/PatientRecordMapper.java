@@ -25,6 +25,8 @@ import dev.pcvolkmer.onco.datamapper.fhir.biomarker.BrcanessMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.biomarker.HrdScoreMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.biomarker.MsiMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.biomarker.TmbMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.DefaultReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import dev.pcvolkmer.onco.datamapper.fhir.careplan.HumangenetischeBeratungMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.careplan.StudieneinschlussMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.careplan.TherapieempfehlungMapper;
@@ -46,13 +48,19 @@ public class PatientRecordMapper {
   private static final Logger LOG = LoggerFactory.getLogger(PatientRecordMapper.class);
 
   private final Bundle.BundleType bundleType;
+  private final ReferenceBuilder referenceBuilder;
 
-  private PatientRecordMapper(Bundle.BundleType bundleType) {
+  private PatientRecordMapper(Bundle.BundleType bundleType, ReferenceBuilder referenceBuilder) {
     this.bundleType = bundleType;
+    this.referenceBuilder = referenceBuilder;
   }
 
   public static PatientRecordMapper defaultInstance() {
-    return new PatientRecordMapper(Bundle.BundleType.TRANSACTION);
+    return customInstance(new DefaultReferenceBuilder());
+  }
+
+  public static PatientRecordMapper customInstance(ReferenceBuilder referenceBuilder) {
+    return new PatientRecordMapper(Bundle.BundleType.TRANSACTION, referenceBuilder);
   }
 
   public Bundle mapToBundle(PatientRecord patientRecord) {
@@ -62,43 +70,43 @@ public class PatientRecordMapper {
 
     final var diagnoses = patientRecord.getDiagnoses();
     if (null != diagnoses) {
-      final var mtbDiagnoseMapper = new MtbDiagnoseMapper();
+      final var mtbDiagnoseMapper = new MtbDiagnoseMapper(referenceBuilder);
       diagnoses.forEach(item -> mtbDiagnoseMapper.addToBundle(bundle, item));
 
-      final var oncoDiagnoseMapper = new OncoDiagnoseMapper();
+      final var oncoDiagnoseMapper = new OncoDiagnoseMapper(referenceBuilder);
       diagnoses.forEach(item -> oncoDiagnoseMapper.addToBundle(bundle, item));
 
-      final var tumorausbreitungMapper = new TumorausbreitungMapper();
+      final var tumorausbreitungMapper = new TumorausbreitungMapper(referenceBuilder);
       diagnoses.forEach(item -> tumorausbreitungMapper.addManyToBundle(bundle, item));
 
-      final var tnmtMapper = new TnmTMapper();
+      final var tnmtMapper = new TnmTMapper(referenceBuilder);
       diagnoses.forEach(item -> tnmtMapper.addManyToBundle(bundle, item));
 
-      final var tnmnMapper = new TnmNMapper();
+      final var tnmnMapper = new TnmNMapper(referenceBuilder);
       diagnoses.forEach(item -> tnmnMapper.addManyToBundle(bundle, item));
 
-      final var tnmmMapper = new TnmMMapper();
+      final var tnmmMapper = new TnmMMapper(referenceBuilder);
       diagnoses.forEach(item -> tnmmMapper.addManyToBundle(bundle, item));
     }
 
     final var carePlans = patientRecord.getCarePlans();
     if (null != carePlans) {
-      final var therapieplanMapper = new TherapieplanMapper();
+      final var therapieplanMapper = new TherapieplanMapper(referenceBuilder);
       carePlans.forEach(item -> therapieplanMapper.addToBundle(bundle, item));
 
-      final var humangenetischeBeratungMapper = new HumangenetischeBeratungMapper();
+      final var humangenetischeBeratungMapper = new HumangenetischeBeratungMapper(referenceBuilder);
       carePlans.stream()
           .map(MtbCarePlan::getGeneticCounselingRecommendation)
           .filter(Objects::nonNull)
           .forEach(item -> humangenetischeBeratungMapper.addToBundle(bundle, item));
 
-      final var therapieempfehlungMapper = new TherapieempfehlungMapper();
+      final var therapieempfehlungMapper = new TherapieempfehlungMapper(referenceBuilder);
       carePlans.stream()
           .filter(item -> item.getMedicationRecommendations() != null)
           .flatMap(item -> item.getMedicationRecommendations().stream())
           .forEach(item -> therapieempfehlungMapper.addToBundle(bundle, item));
 
-      final var studieneinschlussMapper = new StudieneinschlussMapper();
+      final var studieneinschlussMapper = new StudieneinschlussMapper(referenceBuilder);
       carePlans.stream()
           .filter(item -> item.getStudyEnrollmentRecommendations() != null)
           .flatMap(item -> item.getStudyEnrollmentRecommendations().stream())
@@ -107,69 +115,69 @@ public class PatientRecordMapper {
 
     final var histologieReports = patientRecord.getHistologyReports();
     if (null != histologieReports) {
-      final var tumorzellgehaltMapper = new TumorzellgehaltMapper();
+      final var tumorzellgehaltMapper = new TumorzellgehaltMapper(referenceBuilder);
       histologieReports.forEach(item -> tumorzellgehaltMapper.addToBundle(bundle, item));
     }
 
     if (null != histologieReports && null != diagnoses) {
-      final var oncotreeMapper = new OncotreeMapper();
+      final var oncotreeMapper = new OncotreeMapper(referenceBuilder);
       oncotreeMapper.addManyToBundle(bundle, patientRecord);
     }
 
     final var performanceStatus = patientRecord.getPerformanceStatus();
     if (null != performanceStatus) {
-      final var ecogMapper = new EcogMapper();
+      final var ecogMapper = new EcogMapper(referenceBuilder);
       performanceStatus.forEach(item -> ecogMapper.addToBundle(bundle, item));
     }
 
     final var ngsReports = patientRecord.getNgsReports();
     if (null != ngsReports) {
 
-      final var einfacheVarianteMapper = new EinfacheVarianteMapper();
+      final var einfacheVarianteMapper = new EinfacheVarianteMapper(referenceBuilder);
       ngsReports.stream()
           .filter(item -> item.getResults().getSimpleVariants() != null)
           .flatMap(item -> item.getResults().getSimpleVariants().stream())
           .forEach(item -> einfacheVarianteMapper.addToBundle(bundle, item));
 
       final var diagnostischeImplikationMapper =
-          new DiagnostischeImplikationMapper(einfacheVarianteMapper);
+          new DiagnostischeImplikationMapper(referenceBuilder, einfacheVarianteMapper);
       ngsReports.stream()
           .filter(item -> item.getResults().getSimpleVariants() != null)
           .flatMap(item -> item.getResults().getSimpleVariants().stream())
           .filter(diagnostischeImplikationMapper::supports)
           .forEach(item -> diagnostischeImplikationMapper.addToBundle(bundle, item));
 
-      final var cnvMapper = new CnvMapper();
+      final var cnvMapper = new CnvMapper(referenceBuilder);
       ngsReports.stream()
           .filter(item -> item.getResults().getCopyNumberVariants() != null)
           .flatMap(item -> item.getResults().getCopyNumberVariants().stream())
           .forEach(item -> cnvMapper.addToBundle(bundle, item));
 
-      final var dnaFusionMapper = new DnaFusionMapper();
+      final var dnaFusionMapper = new DnaFusionMapper(referenceBuilder);
       ngsReports.stream()
           .filter(item -> item.getResults().getDnaFusions() != null)
           .flatMap(item -> item.getResults().getDnaFusions().stream())
           .forEach(item -> dnaFusionMapper.addToBundle(bundle, item));
 
-      final var rnaFusionMapper = new RnaFusionMapper();
+      final var rnaFusionMapper = new RnaFusionMapper(referenceBuilder);
       ngsReports.stream()
           .filter(item -> item.getResults().getRnaFusions() != null)
           .flatMap(item -> item.getResults().getRnaFusions().stream())
           .forEach(item -> rnaFusionMapper.addToBundle(bundle, item));
 
-      final var hrdScoreMapper = new HrdScoreMapper();
+      final var hrdScoreMapper = new HrdScoreMapper(referenceBuilder);
       ngsReports.stream()
           .filter(item -> item.getResults().getHrdScore() != null)
           .map(item -> item.getResults().getHrdScore())
           .forEach(item -> hrdScoreMapper.addToBundle(bundle, item));
 
-      final var brcanessMapper = new BrcanessMapper();
+      final var brcanessMapper = new BrcanessMapper(referenceBuilder);
       ngsReports.stream()
           .filter(item -> item.getResults().getBrcaness() != null)
           .map(item -> item.getResults().getBrcaness())
           .forEach(item -> brcanessMapper.addToBundle(bundle, item));
 
-      final var tmbMapper = new TmbMapper();
+      final var tmbMapper = new TmbMapper(referenceBuilder);
       ngsReports.stream()
           .filter(item -> item.getResults().getTmb() != null)
           .map(item -> item.getResults().getTmb())
@@ -178,7 +186,7 @@ public class PatientRecordMapper {
 
     final var msiFindings = patientRecord.getMsiFindings();
     if (null != msiFindings) {
-      final var msiMapper = new MsiMapper();
+      final var msiMapper = new MsiMapper(referenceBuilder);
       msiFindings.forEach(
           item -> {
             try {
@@ -193,8 +201,9 @@ public class PatientRecordMapper {
 
     final var ihcReports = patientRecord.getIhcReports();
     if (ihcReports != null) {
-      final var ihcMapper = new IhcMapper();
-      final var molekularPathologieBefundMapper = new MolekularPathologieBefundMapper(ihcMapper);
+      final var ihcMapper = new IhcMapper(referenceBuilder);
+      final var molekularPathologieBefundMapper =
+          new MolekularPathologieBefundMapper(referenceBuilder, ihcMapper);
 
       ihcReports.forEach(
           item -> {

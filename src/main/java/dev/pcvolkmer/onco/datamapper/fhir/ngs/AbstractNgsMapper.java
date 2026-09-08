@@ -22,9 +22,14 @@ package dev.pcvolkmer.onco.datamapper.fhir.ngs;
 import dev.pcvolkmer.mv64e.model.Chromosome;
 import dev.pcvolkmer.mv64e.model.ClinVarCoding;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import org.hl7.fhir.r4.model.Coding;
 
 public abstract class AbstractNgsMapper<T> extends ObservationMapper<T> {
+
+  public AbstractNgsMapper(ReferenceBuilder referenceBuilder) {
+    super(referenceBuilder);
+  }
 
   protected Coding mapChromosome(Chromosome chromosome) {
     final var result = new Coding().setSystem("http://loinc.org");
