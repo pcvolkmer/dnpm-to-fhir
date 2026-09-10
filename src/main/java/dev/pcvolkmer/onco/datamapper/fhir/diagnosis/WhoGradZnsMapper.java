@@ -25,17 +25,19 @@ import dev.pcvolkmer.mv64e.model.TumorGrading;
 import dev.pcvolkmer.onco.datamapper.fhir.ManyMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.Type;
 import org.jspecify.annotations.Nullable;
 
 public class WhoGradZnsMapper extends ObservationMapper<TumorGrading>
     implements ManyMapper<MtbDiagnosis, Observation> {
-  public WhoGradZnsMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  public WhoGradZnsMapper(ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override

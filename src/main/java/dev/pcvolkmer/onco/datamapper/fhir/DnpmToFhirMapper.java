@@ -20,14 +20,17 @@
 package dev.pcvolkmer.onco.datamapper.fhir;
 
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.UUID;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
+import org.hl7.fhir.r4.model.Type;
 
 public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<S, D> {
 
@@ -38,9 +41,12 @@ public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<
   protected String fhirMetaSource = String.format("%s/data-source/dnpm", this.fhirSystemBaseUrl);
 
   protected ReferenceBuilder referenceBuilder;
+  protected List<Filter<? extends Type>> filters;
 
-  protected DnpmToFhirMapper(ReferenceBuilder referenceBuilder) {
+  protected DnpmToFhirMapper(
+      ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
     this.referenceBuilder = referenceBuilder;
+    this.filters = filters;
     try {
       md5Digest = MessageDigest.getInstance("MD5");
     } catch (NoSuchAlgorithmException e) {

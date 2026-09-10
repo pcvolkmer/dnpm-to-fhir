@@ -23,19 +23,21 @@ import dev.pcvolkmer.mv64e.model.IhcReport;
 import dev.pcvolkmer.onco.datamapper.fhir.DiagnosticReportMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.SpecimenMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
+import java.util.List;
 import java.util.Objects;
-import org.hl7.fhir.r4.model.CodeableConcept;
-import org.hl7.fhir.r4.model.Coding;
-import org.hl7.fhir.r4.model.DiagnosticReport;
-import org.hl7.fhir.r4.model.Meta;
-import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.Type;
 
 public class MolekularPathologieBefundMapper extends DiagnosticReportMapper<IhcReport> {
 
   private final IhcMapper ihcMapper;
 
-  public MolekularPathologieBefundMapper(ReferenceBuilder referenceBuilder, IhcMapper ihcMapper) {
-    super(referenceBuilder);
+  public MolekularPathologieBefundMapper(
+      ReferenceBuilder referenceBuilder,
+      IhcMapper ihcMapper,
+      List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
     this.ihcMapper = Objects.requireNonNull(ihcMapper);
   }
 
@@ -88,6 +90,6 @@ public class MolekularPathologieBefundMapper extends DiagnosticReportMapper<IhcR
 
   private Reference getSpecimenReference(IhcReport sourceItem) {
     return this.referenceBuilder.getReference(
-        sourceItem.getSpecimen().getId(), new SpecimenMapper(this.referenceBuilder));
+        sourceItem.getSpecimen().getId(), new SpecimenMapper(this.referenceBuilder, filters));
   }
 }

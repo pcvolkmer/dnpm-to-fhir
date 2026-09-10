@@ -28,6 +28,7 @@ import dev.pcvolkmer.mv64e.model.PatientRecord;
 import dev.pcvolkmer.onco.datamapper.fhir.ManyMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,6 +37,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.Type;
 import org.jspecify.annotations.Nullable;
 
 public class OncotreeMapper extends ObservationMapper<MtbDiagnosis>
@@ -44,8 +46,8 @@ public class OncotreeMapper extends ObservationMapper<MtbDiagnosis>
   private static final String MAPPING_FILE = "ontology_mappings.txt";
   private final List<OncotreeOntologyMapping> oncotreeOntologyMappings;
 
-  public OncotreeMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  public OncotreeMapper(ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
     this.oncotreeOntologyMappings = loadOncotreeOntologyMappings();
   }
 

@@ -24,12 +24,17 @@ import dev.pcvolkmer.mv64e.model.MtbMedicationRecommendation;
 import dev.pcvolkmer.onco.datamapper.fhir.MedicationRequestMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
 import dev.pcvolkmer.onco.datamapper.fhir.diagnosis.MtbDiagnoseMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.AtcCodeFilter;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
+import java.util.List;
 import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.Type;
 
 public class TherapieempfehlungMapper extends MedicationRequestMapper<MtbMedicationRecommendation> {
 
-  public TherapieempfehlungMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  public TherapieempfehlungMapper(
+      ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override
@@ -102,22 +107,36 @@ public class TherapieempfehlungMapper extends MedicationRequestMapper<MtbMedicat
                   this.referenceBuilder
                       .getReference(
                           reason.getId() + "_mtbdiagnose",
-                          new MtbDiagnoseMapper(this.referenceBuilder))
+                          new MtbDiagnoseMapper(this.referenceBuilder, this.filters))
                       .getReference());
       result.addReasonReference(reasonReference);
     }
 
+    final var atcCodeFilter =
+        this.filters.stream()
+            .filter(AtcCodeFilter.class::isInstance)
+            .map(AtcCodeFilter.class::cast)
+            .findAny();
     final var medication = new CodeableConcept();
     if (null != sourceItem.getMedication()) {
       sourceItem
           .getMedication()
           .forEach(
-              medCoding ->
-                  medication.addCoding(
-                      new Coding()
-                          .setSystem(medCoding.getSystem().getValue())
-                          .setCode(medCoding.getCode())
-                          .setDisplay(medCoding.getDisplay())));
+              medCoding -> {
+                final var coding =
+                    new Coding()
+                        .setSystem(medCoding.getSystem().getValue())
+                        .setCode(medCoding.getCode())
+                        .setDisplay(medCoding.getDisplay());
+
+                if (atcCodeFilter.isPresent()) {
+                  if (atcCodeFilter.get().matchesRequirement(coding)) {
+                    medication.addCoding(coding);
+                  }
+                } else {
+                  medication.addCoding(coding);
+                }
+              });
     }
 
     result.setMedication(medication);

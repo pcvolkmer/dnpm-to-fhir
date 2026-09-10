@@ -21,11 +21,14 @@ package dev.pcvolkmer.onco.datamapper.fhir.tnm;
 
 import dev.pcvolkmer.mv64e.model.TumorStagingTnmClassification;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
+import java.util.List;
 import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.Type;
 
 public class TnmTMapper extends AbstractTnmMapper {
-  public TnmTMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  public TnmTMapper(ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override

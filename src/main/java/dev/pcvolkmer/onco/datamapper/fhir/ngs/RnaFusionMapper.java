@@ -21,11 +21,14 @@ package dev.pcvolkmer.onco.datamapper.fhir.ngs;
 
 import dev.pcvolkmer.mv64e.model.RnaFusion;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
+import java.util.List;
 import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.Type;
 
 public class RnaFusionMapper extends AbstractNgsMapper<RnaFusion> {
-  public RnaFusionMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  public RnaFusionMapper(ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override

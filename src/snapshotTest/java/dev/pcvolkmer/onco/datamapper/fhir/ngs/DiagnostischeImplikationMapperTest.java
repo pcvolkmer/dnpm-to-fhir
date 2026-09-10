@@ -23,6 +23,7 @@ import dev.pcvolkmer.mv64e.model.Converter;
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirTest;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -41,7 +42,8 @@ class DiagnostischeImplikationMapperTest extends DnpmToFhirTest {
     var mapper =
         new DiagnostischeImplikationMapper(
             new DizUniMrReferenceBuilder(),
-            new EinfacheVarianteMapper(new DizUniMrReferenceBuilder()));
+            new EinfacheVarianteMapper(new DizUniMrReferenceBuilder(), List.of()),
+            List.of());
 
     var fhir =
         mtb.getNgsReports().get(0).getResults().getSimpleVariants().stream()

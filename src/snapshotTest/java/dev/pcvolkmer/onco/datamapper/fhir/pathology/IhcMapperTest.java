@@ -23,6 +23,7 @@ import dev.pcvolkmer.mv64e.model.Converter;
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirTest;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -36,7 +37,7 @@ class IhcMapperTest extends DnpmToFhirTest {
         Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(filename));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    final var mapper = new IhcMapper(new DizUniMrReferenceBuilder());
+    final var mapper = new IhcMapper(new DizUniMrReferenceBuilder(), List.of());
 
     var fhir = mapper.mapToMany(mtb.getIhcReports().get(0));
 
