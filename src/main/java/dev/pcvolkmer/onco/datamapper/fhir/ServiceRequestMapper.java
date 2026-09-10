@@ -20,12 +20,16 @@
 package dev.pcvolkmer.onco.datamapper.fhir;
 
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
+import java.util.List;
 import org.hl7.fhir.r4.model.ServiceRequest;
+import org.hl7.fhir.r4.model.Type;
 
 public abstract class ServiceRequestMapper<S> extends DnpmToFhirMapper<S, ServiceRequest> {
 
-  public ServiceRequestMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  public ServiceRequestMapper(
+      ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override

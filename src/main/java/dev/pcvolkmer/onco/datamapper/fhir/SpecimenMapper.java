@@ -21,13 +21,16 @@ package dev.pcvolkmer.onco.datamapper.fhir;
 
 import dev.pcvolkmer.mv64e.model.TumorSpecimen;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
+import java.util.List;
 import org.hl7.fhir.r4.model.Specimen;
+import org.hl7.fhir.r4.model.Type;
 import org.jspecify.annotations.Nullable;
 
 public class SpecimenMapper extends DnpmToFhirMapper<TumorSpecimen, Specimen> {
 
-  public SpecimenMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  public SpecimenMapper(ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override

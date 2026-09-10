@@ -23,11 +23,14 @@ import dev.pcvolkmer.mv64e.model.Msi;
 import dev.pcvolkmer.mv64e.model.MsiInterpretationCoding;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
+import java.util.List;
 import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.Type;
 
 public class MsiMapper extends ObservationMapper<Msi> {
-  public MsiMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  public MsiMapper(ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override

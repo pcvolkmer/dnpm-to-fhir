@@ -22,6 +22,29 @@ var fhirJsonString = FhirContext.forR4().newJsonParser().encodeToString(mapper.m
 // ... do something with FHIR JSON String
 ```
 
+### Filter
+
+Es gibt die Möglichkeit, bestimmte Inhalte zu filtern.
+
+```java
+
+var mapper = PatientRecordMapper.customInstance(
+        new DefaultReferenceBuilder(),
+        List.of(
+                // Nur Wirkstoffe mit System 'http://fhir.de/CodeSystem/bfarm/atc' werden berücksichtigt
+                new AtcCodeFilter()
+        )
+);
+var fhirJsonString = FhirContext.forR4().newJsonParser().encodeToString(mapper.mapToBundle(dnpmDataObject));
+
+```
+
+Implementiert ist:
+
+| Name          | Beschreibung                                                             |
+|---------------|--------------------------------------------------------------------------|
+| AtcCodeFilter | Filtert nach ATC-Code. Nur Wirkstoffe mit ATC-Code werden berücksichtigt |
+
 ## Umsetzung
 
 ### MII-MTB – Bereich: Behandlungsepisode
@@ -64,7 +87,7 @@ var fhirJsonString = FhirContext.forR4().newJsonParser().encodeToString(mapper.m
 | FHIR-Profil                    | Status | 
 |--------------------------------|--------|
 | DiagnosticReport               | -      |
-| Immunhistochemie - Observation | ⛅      |
+| Immunhistochemie - Observation | ⛅     |
 | P-Immunhistochemie             | -      |
 | Immunhistochemie MMR MSI       | -      |
 | Immunhistochemie PDL1          | -      |

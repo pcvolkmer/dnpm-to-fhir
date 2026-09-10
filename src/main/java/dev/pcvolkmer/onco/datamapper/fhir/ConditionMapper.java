@@ -20,12 +20,16 @@
 package dev.pcvolkmer.onco.datamapper.fhir;
 
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
+import java.util.List;
 import org.hl7.fhir.r4.model.Condition;
+import org.hl7.fhir.r4.model.Type;
 
 public abstract class ConditionMapper<S> extends DnpmToFhirMapper<S, Condition> {
 
-  protected ConditionMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  protected ConditionMapper(
+      ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override

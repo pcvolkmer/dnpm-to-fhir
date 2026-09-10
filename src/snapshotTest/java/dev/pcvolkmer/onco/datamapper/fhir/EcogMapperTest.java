@@ -22,6 +22,7 @@ package dev.pcvolkmer.onco.datamapper.fhir;
 import dev.pcvolkmer.mv64e.model.Converter;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -36,7 +37,7 @@ class EcogMapperTest extends DnpmToFhirTest {
         Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(filename));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    final var mapper = new EcogMapper(new DizUniMrReferenceBuilder());
+    final var mapper = new EcogMapper(new DizUniMrReferenceBuilder(), List.of());
 
     var fhir = mtb.getPerformanceStatus().stream().map(mapper::map).collect(Collectors.toList());
 

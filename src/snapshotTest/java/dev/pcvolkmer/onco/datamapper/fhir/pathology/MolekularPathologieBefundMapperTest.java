@@ -38,8 +38,9 @@ class MolekularPathologieBefundMapperTest extends DnpmToFhirTest {
 
       var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-      var ihcMapper = new IhcMapper(new DizUniMrReferenceBuilder());
-      var mapper = new MolekularPathologieBefundMapper(new DizUniMrReferenceBuilder(), ihcMapper);
+      var ihcMapper = new IhcMapper(new DizUniMrReferenceBuilder(), List.of());
+      var mapper =
+          new MolekularPathologieBefundMapper(new DizUniMrReferenceBuilder(), ihcMapper, List.of());
 
       var fhir = mapper.map(mtb.getIhcReports().get(0));
 

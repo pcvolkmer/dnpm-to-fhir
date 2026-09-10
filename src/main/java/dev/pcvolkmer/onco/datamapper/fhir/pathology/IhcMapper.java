@@ -24,17 +24,19 @@ import dev.pcvolkmer.mv64e.model.ProteinExpression;
 import dev.pcvolkmer.onco.datamapper.fhir.ManyMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.Type;
 
 public class IhcMapper extends ObservationMapper<ProteinExpression>
     implements ManyMapper<IhcReport, Observation> {
 
-  public IhcMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  public IhcMapper(ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override

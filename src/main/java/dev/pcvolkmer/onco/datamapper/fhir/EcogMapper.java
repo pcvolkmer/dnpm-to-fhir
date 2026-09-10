@@ -23,12 +23,14 @@ import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import dev.pcvolkmer.mv64e.model.EcogCoding;
 import dev.pcvolkmer.mv64e.model.PerformanceStatus;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
 import java.util.List;
 import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.Type;
 
 public class EcogMapper extends ObservationMapper<PerformanceStatus> {
-  public EcogMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  public EcogMapper(ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override

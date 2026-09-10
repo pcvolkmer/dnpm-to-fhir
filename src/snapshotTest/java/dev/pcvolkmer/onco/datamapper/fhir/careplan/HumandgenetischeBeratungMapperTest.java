@@ -24,6 +24,7 @@ import dev.pcvolkmer.mv64e.model.MtbCarePlan;
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirTest;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.DizUniMrReferenceBuilder;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -38,7 +39,7 @@ class HumandgenetischeBeratungMapperTest extends DnpmToFhirTest {
         Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(filename));
     var mtb = Converter.fromJsonString(new String(inputStream.readAllBytes()));
 
-    final var mapper = new HumangenetischeBeratungMapper(new DizUniMrReferenceBuilder());
+    final var mapper = new HumangenetischeBeratungMapper(new DizUniMrReferenceBuilder(), List.of());
 
     var fhir =
         mtb.getCarePlans().stream()

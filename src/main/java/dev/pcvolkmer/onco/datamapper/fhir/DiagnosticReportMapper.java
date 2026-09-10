@@ -20,12 +20,16 @@
 package dev.pcvolkmer.onco.datamapper.fhir;
 
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
+import java.util.List;
 import org.hl7.fhir.r4.model.DiagnosticReport;
+import org.hl7.fhir.r4.model.Type;
 
 public abstract class DiagnosticReportMapper<S> extends DnpmToFhirMapper<S, DiagnosticReport> {
 
-  protected DiagnosticReportMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  protected DiagnosticReportMapper(
+      ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override

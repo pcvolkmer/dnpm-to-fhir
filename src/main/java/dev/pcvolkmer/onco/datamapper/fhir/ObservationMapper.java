@@ -20,12 +20,16 @@
 package dev.pcvolkmer.onco.datamapper.fhir;
 
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
+import java.util.List;
 import org.hl7.fhir.r4.model.Observation;
+import org.hl7.fhir.r4.model.Type;
 
 public abstract class ObservationMapper<S> extends DnpmToFhirMapper<S, Observation> {
 
-  protected ObservationMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  protected ObservationMapper(
+      ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override

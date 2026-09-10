@@ -22,11 +22,14 @@ package dev.pcvolkmer.onco.datamapper.fhir.biomarker;
 import dev.pcvolkmer.mv64e.model.Brcaness;
 import dev.pcvolkmer.onco.datamapper.fhir.ObservationMapper;
 import dev.pcvolkmer.onco.datamapper.fhir.builders.ReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
+import java.util.List;
 import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.Type;
 
 public class BrcanessMapper extends ObservationMapper<Brcaness> {
-  public BrcanessMapper(ReferenceBuilder referenceBuilder) {
-    super(referenceBuilder);
+  public BrcanessMapper(ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
+    super(referenceBuilder, filters);
   }
 
   @Override
