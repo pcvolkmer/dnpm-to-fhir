@@ -53,8 +53,9 @@ public class TherapieempfehlungMapper extends MedicationRequestMapper<MtbMedicat
             .addProfile(
                 "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-therapieempfehlung"));
 
-    if (null != sourceItem.getLevelOfEvidence()
-        && null != sourceItem.getLevelOfEvidence().getGrading()) {
+    final var levelOfEvidence = sourceItem.getLevelOfEvidence();
+
+    if (null != levelOfEvidence && null != levelOfEvidence.getGrading()) {
       final var evidenzlevelExtension =
           new Extension()
               .setUrl(
@@ -63,22 +64,19 @@ public class TherapieempfehlungMapper extends MedicationRequestMapper<MtbMedicat
           new CodeableConcept()
               .addCoding(
                   new Coding()
-                      .setCode(sourceItem.getLevelOfEvidence().getGrading().getCode().getValue())
+                      .setCode(levelOfEvidence.getGrading().getCode().getValue())
                       .setSystem(
                           "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-empfehlung-evidenzgrad"));
 
-      if (null != sourceItem.getLevelOfEvidence()
-          && null != sourceItem.getLevelOfEvidence().getAddendums()) {
-        sourceItem
-            .getLevelOfEvidence()
-            .getAddendums()
-            .forEach(
-                addendum ->
-                    evidenzlevelValue.addCoding(
-                        new Coding()
-                            .setCode(addendum.getCode().getValue())
-                            .setSystem(
-                                "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-empfehlung-evidenzgrad-zusatzverweis")));
+      final var addendums = levelOfEvidence.getAddendums();
+      if (null != addendums) {
+        addendums.forEach(
+            addendum ->
+                evidenzlevelValue.addCoding(
+                    new Coding()
+                        .setCode(addendum.getCode().getValue())
+                        .setSystem(
+                            "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/CodeSystem/mii-cs-mtb-empfehlung-evidenzgrad-zusatzverweis")));
       }
 
       evidenzlevelExtension.setValue(evidenzlevelValue);
