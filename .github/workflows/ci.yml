@@ -23,7 +23,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
       - name: Execute tests
-        run: ./gradlew test
+        run: ./gradlew --no-daemon test
   snapshotTests:
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +35,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
       - name: Execute snapshot tests
-        run: ./gradlew snapshotTest
+        run: ./gradlew --no-daemon snapshotTest
       - name: Upload artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -45,3 +45,27 @@ jobs:
             build/reports/tests/snapshotTest/*
             src/snapshotTest/**/approvals/*
           retention-days: 1
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    needs:
+      - tests
+      - snapshotTests
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v5
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Build
+        run: ./gradlew --no-daemon build -x test
+      - name: Release
+        if: ${{ github.event_name == 'release' && github.event.action == 'created' }}
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            build/libs/*.jar
