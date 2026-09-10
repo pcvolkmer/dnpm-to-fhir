@@ -24,3 +24,24 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
       - name: Execute tests
         run: ./gradlew test
+  snapshotTests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v5
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Execute snapshot tests
+        run: ./gradlew snapshotTest
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: snapshotTest
+          path: |
+            build/reports/tests/snapshotTest/*
+            src/snapshotTest/**/approvals/*
+          retention-days: 1
