@@ -86,7 +86,7 @@ dependencies {
 // Include dependencies in resulting JAR file
 tasks.jar {
     manifest {
-        attributes["Main-Class"] = "dev.pcvolkmer.onco.datamapper.fhir.ExportApplication"
+        attributes["Main-Class"] = "dev.pcvolkmer.onco.datamapper.fhir.MappingApplication"
     }
 }
 
