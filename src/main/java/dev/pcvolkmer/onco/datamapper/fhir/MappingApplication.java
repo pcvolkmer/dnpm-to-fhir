@@ -22,10 +22,14 @@ package dev.pcvolkmer.onco.datamapper.fhir;
 
 import ca.uhn.fhir.context.FhirContext;
 import dev.pcvolkmer.mv64e.model.Converter;
+import dev.pcvolkmer.onco.datamapper.fhir.builders.DefaultReferenceBuilder;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.AtcCodeFilter;
+import dev.pcvolkmer.onco.datamapper.fhir.filter.Filter;
 import java.io.FileInputStream;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
@@ -57,7 +61,12 @@ public class MappingApplication {
       var dnpmJson = IOUtils.toString(fis, StandardCharsets.UTF_8);
       var dnpmData = Converter.fromJsonString(dnpmJson);
 
-      var mapper = PatientRecordMapper.defaultInstance();
+      final var filters = new ArrayList<Filter<?>>();
+      if (parsedCliArgs.hasOption("filter-atc")) {
+        filters.add(new AtcCodeFilter());
+      }
+
+      var mapper = PatientRecordMapper.customInstance(new DefaultReferenceBuilder(), filters);
       var fhirJson =
           FhirContext.forR4().newJsonParser().encodeToString(mapper.mapToBundle(dnpmData));
 
@@ -74,6 +83,12 @@ public class MappingApplication {
 
   private static Options getCliOptions() {
     Options options = new Options();
+    options.addOption(Option.builder().longOpt("help").desc("Hilfe anzeigen").get());
+    options.addOption(
+        Option.builder()
+            .longOpt("filter-atc")
+            .desc("Nur Wirkstoffe mit ATC-Code-System mappen")
+            .get());
     options.addOption(Option.builder().longOpt("filename").hasArg().desc("Datei").get());
     return options;
   }

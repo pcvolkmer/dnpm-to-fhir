@@ -10,6 +10,18 @@ Die Jar-Datei enthält alle Abhängigkeiten und lässt sich mit folgendem Befehl
 java -jar <dateiname>.jar --filename <file> 
 ```
 
+Weitere Optionen:
+
+```
+ usage:  java -jar <dateiname>.jar [--filename <arg>] [--filter-atc]
+    [--help]
+
+     Options                         Description               
+ --help               Hilfe anzeigen                           
+ --filter-atc         Nur Wirkstoffe mit ATC-Code-System mappen
+ --filename <arg>     Datei 
+```
+
 ### Als Library
 
 ```java
