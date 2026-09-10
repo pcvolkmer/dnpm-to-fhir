@@ -109,6 +109,8 @@ tasks.withType<Test> {
     }
     useJUnitPlatform()
     dependsOn(tasks.spotlessCheck)
+
+    systemProperty("user.timezone", "UTC")
 }
 
 tasks.withType<JavaCompile> {
