@@ -30,6 +30,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.TimeZone;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
@@ -39,6 +40,8 @@ import org.apache.commons.io.IOUtils;
 public class MappingApplication {
 
   public static void main(String[] args) throws Exception {
+    TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+
     final var parsedCliArgs = DefaultParser.builder().get().parse(getCliOptions(), args);
 
     if (parsedCliArgs.hasOption("help")) {
