@@ -69,3 +69,6 @@ jobs:
         with:
           files: |
             build/libs/*.jar
+      - name: Publish to Maven
+        if: ${{ github.event_name == 'release' && github.event.action == 'created' }}
+        run: ./gradlew publish -Pdnpm_dev_token=${{ secrets.DNPM_DEV_TOKEN }}
