@@ -1,6 +1,6 @@
-# Beispielanwendung zum Mapping des DNPM-Datenmodells 2.1 in ein FHIR-Bundle
+# Library/Anwendung zum Mapping des DNPM-Datenmodells 2.1 in ein FHIR-Bundle
 
-Diese Beispielanwendung ermöglicht das Mapping des DNPM-Datenmodells 2.1 in ein FHIR-Bundle.
+Diese Library/Anwendung ermöglicht das Mapping des DNPM-Datenmodells 2.1 für das Modellvorhaben Genomsequenzierung in ein FHIR-Bundle.
 
 ## Anwendung
 
@@ -33,6 +33,15 @@ var fhirJsonString = FhirContext.forR4().newJsonParser().encodeToString(mapper.m
 
 // ... do something with FHIR JSON String
 ```
+
+### Referenz-Builder
+
+Es sind aktuell zwei Referenz-Builder implementiert
+
+* `DefaultReferenceBuilder`: Die Standardimplemntierung, nutzbar von zahlreichen Standorten
+* `DizUniMrReferenceBuilder`: Implementierung für das DIZ der Universität Marburg
+
+Weitere Implementierungen müssen das Interface `ReferenceBuilder` implementieren.
 
 ### Filter
 
