@@ -12,7 +12,7 @@ plugins {
 group = "dev.pcvolkmer.onco"
 version = "0.1.0-SNAPSHOT"
 
-val mtbModel by extra ("0.5.0")
+val mtbModel by extra ("0.6.4")
 
 // Min versions as required by Onkostar
 val commonsCli by extra("1.10.0")
