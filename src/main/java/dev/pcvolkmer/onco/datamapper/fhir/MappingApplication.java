@@ -69,7 +69,9 @@ public class MappingApplication {
         filters.add(new AtcCodeFilter());
       }
 
-      var mapper = PatientRecordMapper.customInstance(new DefaultReferenceBuilder(), filters);
+      var mapper =
+          PatientRecordMapper.customInstance(
+              new DefaultReferenceBuilder(), filters, parsedCliArgs.hasOption("mtb-only"));
       var fhirJson =
           FhirContext.forR4().newJsonParser().encodeToString(mapper.mapToBundle(dnpmData));
 
@@ -92,6 +94,8 @@ public class MappingApplication {
             .longOpt("filter-atc")
             .desc("Nur Wirkstoffe mit ATC-Code-System mappen")
             .get());
+    options.addOption(
+        Option.builder().longOpt("mtb-only").desc("Nur Ressourcen mit MTB-Profilen mappen").get());
     options.addOption(Option.builder().longOpt("filename").hasArg().desc("Datei").get());
     return options;
   }
