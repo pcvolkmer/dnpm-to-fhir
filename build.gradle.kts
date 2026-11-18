@@ -3,6 +3,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     id("java")
+    id("java-library")
     id("com.gradleup.shadow") version "8.3.8"
     id("com.diffplug.spotless") version "7.2.1"
     id("net.ltgt.errorprone") version "4.3.0"
@@ -10,7 +11,7 @@ plugins {
 }
 
 group = "dev.pcvolkmer.onco"
-version = "0.1.0-SNAPSHOT"
+version = "0.1.0-SNAPSHOT" // x-release-please-version
 
 val mtbModel by extra ("0.6.4")
 
@@ -65,7 +66,8 @@ configurations {
 }
 
 dependencies {
-    implementation("dev.pcvolkmer.mv64e:mtb-model:$mtbModel")
+    api("dev.pcvolkmer.mv64e:mtb-model:$mtbModel")
+
     implementation("commons-cli:commons-cli:$commonsCli")
     implementation("commons-io:commons-io:$commonsIo")
     implementation("ca.uhn.hapi.fhir:hapi-fhir-base:${hapiFhirVersion}")
