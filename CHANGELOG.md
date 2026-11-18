@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.1](https://github.com/pcvolkmer/dnpm-to-fhir/compare/v0.1.0...v0.1.1) (2026-11-18)
+
+
+### Features
+
+* add generic NGS report profile ([#16](https://github.com/pcvolkmer/dnpm-to-fhir/issues/16)) ([af2186b](https://github.com/pcvolkmer/dnpm-to-fhir/commit/af2186b1ccf444c2e5d464ce34cfe0cc1a439b67))
+* add mtb-only option to PatientRecordMapper ([#18](https://github.com/pcvolkmer/dnpm-to-fhir/issues/18)) ([165f103](https://github.com/pcvolkmer/dnpm-to-fhir/commit/165f10345cd6b872333e2d50ce536e5c97272aef))
+
 ## [0.1.0](https://github.com/pcvolkmer/dnpm-to-fhir/compare/v0.1.0...v0.1.0) (2026-09-10)
 
 
