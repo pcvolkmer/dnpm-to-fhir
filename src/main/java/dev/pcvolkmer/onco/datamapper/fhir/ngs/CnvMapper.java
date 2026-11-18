@@ -50,6 +50,8 @@ public class CnvMapper extends AbstractNgsMapper<Cnv> {
         new Meta()
             .setSource(this.fhirMetaSource)
             .addProfile(
+                "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-ngs-bericht")
+            .addProfile(
                 "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-copy-number-variant"));
 
     result.setStatus(Observation.ObservationStatus.FINAL);

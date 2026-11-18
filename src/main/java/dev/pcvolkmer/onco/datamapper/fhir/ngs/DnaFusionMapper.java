@@ -50,6 +50,8 @@ public class DnaFusionMapper extends AbstractNgsMapper<DnaFusion> {
         new Meta()
             .setSource(this.fhirMetaSource)
             .addProfile(
+                "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-ngs-bericht")
+            .addProfile(
                 "https://www.medizininformatik-initiative.de/fhir/ext/modul-mtb/StructureDefinition/mii-pr-mtb-dna-fusion"));
 
     result.setStatus(Observation.ObservationStatus.FINAL);
