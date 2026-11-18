@@ -14,12 +14,13 @@ Weitere Optionen:
 
 ```
  usage:  java -jar <dateiname>.jar [--filename <arg>] [--filter-atc]
-    [--help]
+    [--help] [--mtb-only]
 
      Options                         Description               
  --help               Hilfe anzeigen                           
  --filter-atc         Nur Wirkstoffe mit ATC-Code-System mappen
- --filename <arg>     Datei 
+ --mtb-only           Nur Ressourcen mit MTB-Profilen mappen   
+ --filename <arg>     Datei   
 ```
 
 ### Als Library
@@ -54,7 +55,8 @@ var mapper = PatientRecordMapper.customInstance(
         List.of(
                 // Nur Wirkstoffe mit System 'http://fhir.de/CodeSystem/bfarm/atc' werden berücksichtigt
                 new AtcCodeFilter()
-        )
+        ),
+        false
 );
 var fhirJsonString = FhirContext.forR4().newJsonParser().encodeToString(mapper.mapToBundle(dnpmDataObject));
 

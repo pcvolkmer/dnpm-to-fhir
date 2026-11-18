@@ -53,27 +53,31 @@ public class PatientRecordMapper {
   private final Bundle.BundleType bundleType;
   private final ReferenceBuilder referenceBuilder;
   private final List<Filter<? extends Type>> filters;
+  private final boolean mtbOnly;
 
   private PatientRecordMapper(
       Bundle.BundleType bundleType,
       ReferenceBuilder referenceBuilder,
-      List<Filter<? extends Type>> filters) {
+      List<Filter<? extends Type>> filters,
+      boolean mtbOnly) {
     this.bundleType = bundleType;
     this.referenceBuilder = referenceBuilder;
     this.filters = filters;
+    this.mtbOnly = mtbOnly;
   }
 
   public static PatientRecordMapper defaultInstance() {
-    return customInstance(new DefaultReferenceBuilder(), List.of());
+    return customInstance(new DefaultReferenceBuilder(), List.of(), false);
   }
 
   public static PatientRecordMapper customInstance(ReferenceBuilder referenceBuilder) {
-    return customInstance(referenceBuilder, List.of());
+    return customInstance(referenceBuilder, List.of(), false);
   }
 
   public static PatientRecordMapper customInstance(
-      ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
-    return new PatientRecordMapper(Bundle.BundleType.TRANSACTION, referenceBuilder, filters);
+      ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters, boolean mtbOnly) {
+    return new PatientRecordMapper(
+        Bundle.BundleType.TRANSACTION, referenceBuilder, filters, mtbOnly);
   }
 
   public Bundle mapToBundle(PatientRecord patientRecord) {
@@ -86,20 +90,24 @@ public class PatientRecordMapper {
       final var mtbDiagnoseMapper = new MtbDiagnoseMapper(referenceBuilder, filters);
       diagnoses.forEach(item -> mtbDiagnoseMapper.addToBundle(bundle, item));
 
-      final var oncoDiagnoseMapper = new OncoDiagnoseMapper(referenceBuilder, filters);
-      diagnoses.forEach(item -> oncoDiagnoseMapper.addToBundle(bundle, item));
+      if (!mtbOnly) {
+        final var oncoDiagnoseMapper = new OncoDiagnoseMapper(referenceBuilder, filters);
+        diagnoses.forEach(item -> oncoDiagnoseMapper.addToBundle(bundle, item));
+      }
 
       final var tumorausbreitungMapper = new TumorausbreitungMapper(referenceBuilder, filters);
       diagnoses.forEach(item -> tumorausbreitungMapper.addManyToBundle(bundle, item));
 
-      final var tnmtMapper = new TnmTMapper(referenceBuilder, filters);
-      diagnoses.forEach(item -> tnmtMapper.addManyToBundle(bundle, item));
+      if (!mtbOnly) {
+        final var tnmtMapper = new TnmTMapper(referenceBuilder, filters);
+        diagnoses.forEach(item -> tnmtMapper.addManyToBundle(bundle, item));
 
-      final var tnmnMapper = new TnmNMapper(referenceBuilder, filters);
-      diagnoses.forEach(item -> tnmnMapper.addManyToBundle(bundle, item));
+        final var tnmnMapper = new TnmNMapper(referenceBuilder, filters);
+        diagnoses.forEach(item -> tnmnMapper.addManyToBundle(bundle, item));
 
-      final var tnmmMapper = new TnmMMapper(referenceBuilder, filters);
-      diagnoses.forEach(item -> tnmmMapper.addManyToBundle(bundle, item));
+        final var tnmmMapper = new TnmMMapper(referenceBuilder, filters);
+        diagnoses.forEach(item -> tnmmMapper.addManyToBundle(bundle, item));
+      }
     }
 
     final var carePlans = patientRecord.getCarePlans();
@@ -139,7 +147,7 @@ public class PatientRecordMapper {
     }
 
     final var performanceStatus = patientRecord.getPerformanceStatus();
-    if (null != performanceStatus) {
+    if (null != performanceStatus && !mtbOnly) {
       final var ecogMapper = new EcogMapper(referenceBuilder, filters);
       performanceStatus.forEach(item -> ecogMapper.addToBundle(bundle, item));
     }
