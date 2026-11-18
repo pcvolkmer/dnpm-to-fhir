@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "dev.pcvolkmer.onco"
-version = "0.1.0-SNAPSHOT" // x-release-please-version
+version = "0.1.1" // x-release-please-version
 
 val mtbModel by extra ("0.6.4")
 
