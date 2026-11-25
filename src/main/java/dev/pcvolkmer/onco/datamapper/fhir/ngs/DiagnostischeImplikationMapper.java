@@ -46,7 +46,9 @@ public class DiagnostischeImplikationMapper extends AbstractNgsMapper<Snv> {
 
     var result = new Observation();
 
-    result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem));
+    this.setResourceId(
+        result,
+        result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem)));
 
     result.setMeta(
         new Meta()
