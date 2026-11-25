@@ -39,6 +39,6 @@ public abstract class ObservationMapper<S> extends DnpmToFhirMapper<S, Observati
 
   @Override
   public String getSystem() {
-    return String.format("%s/sid/observation-id", this.fhirSystemBaseUrl);
+    return this.fhirProperties.identifierSystem("observation-id");
   }
 }

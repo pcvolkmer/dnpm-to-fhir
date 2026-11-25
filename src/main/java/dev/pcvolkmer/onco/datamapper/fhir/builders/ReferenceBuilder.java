@@ -20,10 +20,35 @@
 package dev.pcvolkmer.onco.datamapper.fhir.builders;
 
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.FhirProperties;
+import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 
 public interface ReferenceBuilder {
+
+  default FhirProperties getFhirProperties() {
+    return FhirProperties.marburg();
+  }
+
+  default void setResourceId(Resource resource, Identifier identifier) {
+    // Keep original Id behavior
+  }
+
+  default void configureBundleEntry(Bundle.BundleEntryComponent entry) {
+    // Keep bundle behavior
+  }
+
+  default <S, D extends Resource> Reference getConditionalPatientReference(
+      String id, DnpmToFhirMapper<S, D> mapper) {
+
+    return new Reference()
+        .setReference(
+            String.format(
+                "Patient?identifier=%s|%s",
+                getFhirProperties().identifierSystem("patient-id"), id));
+  }
 
   /**
    * Constructs a FHIR {@code Reference} object for the specified patient based on the provided
