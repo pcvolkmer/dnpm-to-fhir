@@ -39,6 +39,6 @@ public abstract class ConditionMapper<S> extends DnpmToFhirMapper<S, Condition> 
 
   @Override
   public String getSystem() {
-    return String.format("%s/sid/condition-id", this.fhirSystemBaseUrl);
+    return this.fhirProperties.identifierSystem("condition-id");
   }
 }

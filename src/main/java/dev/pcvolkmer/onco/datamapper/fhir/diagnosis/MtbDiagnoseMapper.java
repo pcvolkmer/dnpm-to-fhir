@@ -48,7 +48,11 @@ public class MtbDiagnoseMapper extends ConditionMapper<MtbDiagnosis> {
   @Override
   public Condition map(MtbDiagnosis diagnose) {
     var condition = new Condition();
-    condition.addIdentifier().setSystem(this.getSystem()).setValue(diagnose.getId());
+
+    // FIXME: inhaltliche Änderung durch to-fhir, checken
+    this.setResourceId(
+        condition,
+        condition.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(diagnose)));
 
     condition.setMeta(
         new Meta()

@@ -131,14 +131,8 @@ public class WhoGradZnsMapper extends ObservationMapper<TumorGrading>
                       new Identifier()
                           .setSystem(this.getSystem())
                           .setValue(sourceItem.getId() + "_znsgrading-" + idx)));
-
-              bundle
-                  .addEntry()
-                  .setResource(newItem)
-                  .setFullUrl(this.fullUrlUrn(requestUrl))
-                  .getRequest()
-                  .setMethod(Bundle.HTTPVerb.PUT)
-                  .setUrl(requestUrl);
+              this.setResourceId(newItem, newItem.getIdentifierFirstRep());
+              this.addResourceToBundle(bundle, newItem, requestUrl);
             });
   }
 

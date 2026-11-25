@@ -118,17 +118,16 @@ public class TumorausbreitungMapper extends ObservationMapper<TumorStaging>
   @Override
   public void addManyToBundle(Bundle bundle, MtbDiagnosis sourceItem) {
     final var patientReference =
-        this.referenceBuilder.getPatientReference(sourceItem.getPatient().getId(), this);
+        this.referenceBuilder.getConditionalPatientReference(sourceItem.getPatient().getId(), this);
 
     final var newItems = this.mapToMany(sourceItem);
     IntStream.range(0, newItems.size())
         .forEach(
             idx -> {
               final var requestUrl =
-                  this.referenceBuilder
-                      .getReference(
-                          String.format("%s_%s-%d", sourceItem.getId(), "tumorstaging", idx), this)
-                      .getReference();
+                  String.format(
+                      "Observation?identifier=%s|%s_tumorstaging-%d",
+                      this.getSystem(), sourceItem.getId(), idx);
 
               final var newItem = newItems.get(idx);
               newItem.setSubject(patientReference);
@@ -138,13 +137,8 @@ public class TumorausbreitungMapper extends ObservationMapper<TumorStaging>
                           .setSystem(this.getSystem())
                           .setValue(String.format("%s_tumorstaging-%d", sourceItem.getId(), idx))));
 
-              bundle
-                  .addEntry()
-                  .setResource(newItem)
-                  .setFullUrl(this.fullUrlUrn(requestUrl))
-                  .getRequest()
-                  .setMethod(Bundle.HTTPVerb.PUT)
-                  .setUrl(requestUrl);
+              this.setResourceId(newItem, newItem.getIdentifierFirstRep());
+              this.addResourceToBundle(bundle, newItem, requestUrl);
             });
   }
 

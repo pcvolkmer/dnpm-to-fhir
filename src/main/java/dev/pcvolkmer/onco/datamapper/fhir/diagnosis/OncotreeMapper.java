@@ -65,7 +65,9 @@ public class OncotreeMapper extends ObservationMapper<MtbDiagnosis>
   public Observation map(MtbDiagnosis sourceItem) {
     var result = new Observation();
 
-    result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem));
+    this.setResourceId(
+        result,
+        result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem)));
 
     result.setMeta(
         new Meta()
@@ -104,13 +106,16 @@ public class OncotreeMapper extends ObservationMapper<MtbDiagnosis>
     for (final var diagnosis : diagnoses) {
       createObservation(sourceItem, diagnosis)
           .ifPresent(
-              result ->
-                  bundle
-                      .addEntry()
-                      .setResource(result)
-                      .getRequest()
-                      .setMethod(Bundle.HTTPVerb.PUT)
-                      .setUrl(this.getRequestUrl(diagnosis)));
+              result -> {
+                final var entry = bundle.addEntry().setResource(result);
+
+                entry
+                    .getRequest()
+                    .setMethod(Bundle.HTTPVerb.PUT)
+                    .setUrl(this.getRequestUrl(diagnosis));
+
+                this.referenceBuilder.configureBundleEntry(entry);
+              });
     }
   }
 
