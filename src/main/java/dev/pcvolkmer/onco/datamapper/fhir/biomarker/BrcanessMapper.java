@@ -45,7 +45,9 @@ public class BrcanessMapper extends ObservationMapper<Brcaness> {
   @Override
   public Observation map(Brcaness sourceItem) {
     var result = new Observation();
-    result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem));
+    this.setResourceId(
+        result,
+        result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem)));
 
     result.setMeta(
         new Meta()
