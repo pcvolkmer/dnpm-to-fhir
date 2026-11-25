@@ -33,10 +33,8 @@ public record FhirProperties(String identifierBaseUrl, String metaSource, System
   }
 
   public static FhirProperties fromBaseUrl(String baseUrl) {
-    String normalizedBaseUrl = baseUrl.strip().replaceAll("/+$", "");
 
-    return new FhirProperties(
-        normalizedBaseUrl, normalizedBaseUrl + "/data-source/dnpm", new Systems(Map.of()));
+    return new FhirProperties(baseUrl, baseUrl + "/data-source/dnpm", new Systems(Map.of()));
   }
 
   public static FhirProperties marburg() {
