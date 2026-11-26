@@ -1,16 +1,10 @@
 package dev.pcvolkmer.onco.datamapper.fhir;
 
 import java.util.Map;
-import java.util.Objects;
 
 public record FhirProperties(String identifierBaseUrl, String metaSource, Systems systems) {
 
   public FhirProperties {
-    Objects.requireNonNull(identifierBaseUrl);
-    Objects.requireNonNull(metaSource);
-    Objects.requireNonNull(systems);
-
-    identifierBaseUrl = identifierBaseUrl.strip().replaceAll("/+$", "");
 
     if (identifierBaseUrl.isBlank()) {
       throw new IllegalArgumentException("Identifier base URL must not be empty");

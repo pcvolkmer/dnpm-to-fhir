@@ -66,9 +66,9 @@ public class ToFhirReferenceBuilder implements ReferenceBuilder {
 
   @Override
   public <S, D extends Resource> Reference getReference(
-      String legacyId, String identityKey, DnpmToFhirMapper<S, D> mapper) {
+      String referenceId, String resourceIdKey, DnpmToFhirMapper<S, D> mapper) {
 
-    return this.getReference(identityKey, mapper);
+    return this.getReference(resourceIdKey, mapper);
   }
 
   @Override

@@ -26,7 +26,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import java.util.Objects;
 import java.util.TimeZone;
 import java.util.UUID;
 import org.hl7.fhir.r4.model.Bundle;
@@ -51,7 +50,7 @@ public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<
       ReferenceBuilder referenceBuilder, List<Filter<? extends Type>> filters) {
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 
-    this.referenceBuilder = Objects.requireNonNull(referenceBuilder);
+    this.referenceBuilder = referenceBuilder;
     this.filters = filters;
     this.fhirProperties = referenceBuilder.getFhirProperties();
     this.fhirSystemBaseUrl = fhirProperties.identifierBaseUrl();
