@@ -12,16 +12,9 @@ import org.hl7.fhir.r4.model.Resource;
 public class ToFhirReferenceBuilder implements ReferenceBuilder {
 
   private final FhirProperties fhirProperties;
-  private final String fhirServerBaseUrl;
 
-  public ToFhirReferenceBuilder(FhirProperties fhirProperties, String fhirServerBaseUrl) {
-
+  public ToFhirReferenceBuilder(FhirProperties fhirProperties) {
     this.fhirProperties = Objects.requireNonNull(fhirProperties);
-    this.fhirServerBaseUrl = Objects.requireNonNull(fhirServerBaseUrl).replaceAll("/+$", "");
-
-    if (this.fhirServerBaseUrl.isBlank()) {
-      throw new IllegalArgumentException("FHIR server base URL must not be empty");
-    }
   }
 
   @Override
@@ -47,7 +40,7 @@ public class ToFhirReferenceBuilder implements ReferenceBuilder {
 
     entry.getRequest().setMethod(Bundle.HTTPVerb.PUT).setUrl(requestUrl);
 
-    entry.setFullUrl(fhirServerBaseUrl + "/" + requestUrl);
+    entry.setFullUrl(requestUrl);
   }
 
   @Override
