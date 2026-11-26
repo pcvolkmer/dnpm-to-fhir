@@ -48,9 +48,10 @@ public class EcogMapper extends ObservationMapper<PerformanceStatus> {
   @Override
   public Observation map(PerformanceStatus sourceItem) {
     var result = new Observation();
+
+    result.addIdentifier().setSystem(this.getSystem()).setValue(sourceItem.getId());
     this.setResourceId(
-        result,
-        result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem)));
+        result, new Identifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem)));
 
     result.setMeta(
         new Meta()

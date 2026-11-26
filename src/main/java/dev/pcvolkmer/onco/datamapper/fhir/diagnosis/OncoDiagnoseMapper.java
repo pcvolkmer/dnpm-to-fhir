@@ -49,10 +49,9 @@ public class OncoDiagnoseMapper extends ConditionMapper<MtbDiagnosis> {
   public Condition map(MtbDiagnosis diagnose) {
     var condition = new Condition();
 
-    // FIXME: inhaltliche Änderung durch to-fhir, checken
+    condition.addIdentifier().setSystem(this.getSystem()).setValue(diagnose.getId());
     this.setResourceId(
-        condition,
-        condition.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(diagnose)));
+        condition, new Identifier().setSystem(this.getSystem()).setValue(this.getId(diagnose)));
 
     condition.setMeta(
         new Meta()
