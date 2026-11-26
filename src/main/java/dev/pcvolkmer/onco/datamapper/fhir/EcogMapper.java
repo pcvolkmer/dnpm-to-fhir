@@ -38,8 +38,6 @@ public class EcogMapper extends ObservationMapper<PerformanceStatus> {
     return item.getPatient().getId();
   }
 
-  // TODO: durch _ecog andere ID und meine to-fhir Änderungen würden hier was im vgl zum
-  // Ursprungsmapping kaputt machen
   @Override
   public String getId(PerformanceStatus item) {
     return String.format("%s_ecog", item.getId());
