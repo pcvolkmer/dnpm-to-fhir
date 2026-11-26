@@ -49,7 +49,9 @@ public class StudieneinschlussMapper
   @Override
   public ServiceRequest map(MtbStudyEnrollmentRecommendation sourceItem) {
     var result = new ServiceRequest();
-    result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem));
+    this.setResourceId(
+        result,
+        result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem)));
 
     result.setMeta(
         new Meta()

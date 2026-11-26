@@ -39,6 +39,6 @@ public abstract class ServiceRequestMapper<S> extends DnpmToFhirMapper<S, Servic
 
   @Override
   public String getSystem() {
-    return String.format("%s/sid/service-request-id", this.fhirSystemBaseUrl);
+    return this.fhirProperties.identifierSystem("service-request-id");
   }
 }

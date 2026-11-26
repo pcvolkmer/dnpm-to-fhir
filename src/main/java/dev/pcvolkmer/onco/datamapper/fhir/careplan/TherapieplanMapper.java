@@ -49,7 +49,9 @@ public class TherapieplanMapper extends CarePlanMapper<MtbCarePlan> {
   @Override
   public CarePlan map(MtbCarePlan sourceItem) {
     var result = new CarePlan();
-    result.addIdentifier().setSystem(this.getSystem()).setValue(sourceItem.getId());
+    this.setResourceId(
+        result,
+        result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem)));
 
     result.setMeta(
         new Meta()
@@ -80,7 +82,7 @@ public class TherapieplanMapper extends CarePlanMapper<MtbCarePlan> {
 
     final var reasonReference = sourceItem.getReason();
     if (null != reasonReference) {
-      final var reasonId = reasonReference.getId();
+      final var reasonId = reasonReference.getId() + "_mtbdiagnose";
       result.addAddresses(
           new Reference()
               .setReference(

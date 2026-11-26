@@ -39,6 +39,6 @@ public abstract class MedicationRequestMapper<S> extends DnpmToFhirMapper<S, Med
 
   @Override
   public String getSystem() {
-    return String.format("%s/sid/medication-request-id", this.fhirSystemBaseUrl);
+    return this.fhirProperties.identifierSystem("medication-request-id");
   }
 }
