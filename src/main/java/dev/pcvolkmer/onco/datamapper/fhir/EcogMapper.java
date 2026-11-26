@@ -38,6 +38,8 @@ public class EcogMapper extends ObservationMapper<PerformanceStatus> {
     return item.getPatient().getId();
   }
 
+  // TODO: durch _ecog andere ID und meine to-fhir Änderungen würden hier was im vgl zum
+  // Ursprungsmapping kaputt machen
   @Override
   public String getId(PerformanceStatus item) {
     return String.format("%s_ecog", item.getId());
@@ -46,7 +48,9 @@ public class EcogMapper extends ObservationMapper<PerformanceStatus> {
   @Override
   public Observation map(PerformanceStatus sourceItem) {
     var result = new Observation();
-    result.addIdentifier().setSystem(this.getSystem()).setValue(sourceItem.getId());
+    this.setResourceId(
+        result,
+        result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem)));
 
     result.setMeta(
         new Meta()
