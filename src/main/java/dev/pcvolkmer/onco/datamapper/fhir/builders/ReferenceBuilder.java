@@ -40,16 +40,6 @@ public interface ReferenceBuilder {
     // Keep bundle behavior
   }
 
-  default <S, D extends Resource> Reference getConditionalPatientReference(
-      String id, DnpmToFhirMapper<S, D> mapper) {
-
-    return new Reference()
-        .setReference(
-            String.format(
-                "Patient?identifier=%s|%s",
-                getFhirProperties().identifierSystem("patient-id"), id));
-  }
-
   /**
    * Constructs a FHIR {@code Reference} object for the specified patient based on the provided
    * input item and a {@code DnpmToFhirMapper} implementation.
@@ -104,4 +94,10 @@ public interface ReferenceBuilder {
    */
   <S, D extends Resource> Reference getReference(
       String id, DnpmToFhirMapper<S, D> dnpmToFhirMapper);
+
+  default <S, D extends Resource> Reference getReference(
+      String legacyId, String identityKey, DnpmToFhirMapper<S, D> mapper) {
+
+    return this.getReference(legacyId, mapper);
+  }
 }

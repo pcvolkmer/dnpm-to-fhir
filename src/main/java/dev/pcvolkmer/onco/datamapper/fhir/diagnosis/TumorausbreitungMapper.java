@@ -118,16 +118,17 @@ public class TumorausbreitungMapper extends ObservationMapper<TumorStaging>
   @Override
   public void addManyToBundle(Bundle bundle, MtbDiagnosis sourceItem) {
     final var patientReference =
-        this.referenceBuilder.getConditionalPatientReference(sourceItem.getPatient().getId(), this);
+        this.referenceBuilder.getPatientReference(sourceItem.getPatient().getId(), this);
 
     final var newItems = this.mapToMany(sourceItem);
     IntStream.range(0, newItems.size())
         .forEach(
             idx -> {
               final var requestUrl =
-                  String.format(
-                      "Observation?identifier=%s|%s_tumorstaging-%d",
-                      this.getSystem(), sourceItem.getId(), idx);
+                  this.referenceBuilder
+                      .getReference(
+                          String.format("%s_tumorstaging-%d", sourceItem.getId(), idx), this)
+                      .getReference();
 
               final var newItem = newItems.get(idx);
               newItem.setSubject(patientReference);

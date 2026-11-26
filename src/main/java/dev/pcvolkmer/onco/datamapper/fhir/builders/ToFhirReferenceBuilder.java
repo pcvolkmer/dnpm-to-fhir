@@ -51,13 +51,6 @@ public class ToFhirReferenceBuilder implements ReferenceBuilder {
   }
 
   @Override
-  public <S, D extends Resource> Reference getConditionalPatientReference(
-      String id, DnpmToFhirMapper<S, D> mapper) {
-
-    return this.getPatientReference(id, mapper);
-  }
-
-  @Override
   public <S, D extends Resource> Reference getPatientReference(
       S item, DnpmToFhirMapper<S, D> dnpmToFhirMapper) {
 
@@ -76,6 +69,13 @@ public class ToFhirReferenceBuilder implements ReferenceBuilder {
       S item, DnpmToFhirMapper<S, D> dnpmToFhirMapper) {
 
     return getReference(dnpmToFhirMapper.getId(item), dnpmToFhirMapper);
+  }
+
+  @Override
+  public <S, D extends Resource> Reference getReference(
+      String legacyId, String identityKey, DnpmToFhirMapper<S, D> mapper) {
+
+    return this.getReference(identityKey, mapper);
   }
 
   @Override

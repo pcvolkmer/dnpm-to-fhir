@@ -123,7 +123,7 @@ public abstract class AbstractTnmMapper extends ObservationMapper<TumorStaging>
   @Override
   public void addManyToBundle(Bundle bundle, MtbDiagnosis sourceItem) {
     final var patientReference =
-        this.referenceBuilder.getConditionalPatientReference(sourceItem.getPatient().getId(), this);
+        this.referenceBuilder.getPatientReference(sourceItem.getPatient().getId(), this);
 
     final var newItems = this.mapToMany(sourceItem);
     IntStream.range(0, newItems.size())
