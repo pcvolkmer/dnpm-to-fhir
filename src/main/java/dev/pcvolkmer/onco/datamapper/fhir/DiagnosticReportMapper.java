@@ -39,6 +39,6 @@ public abstract class DiagnosticReportMapper<S> extends DnpmToFhirMapper<S, Diag
 
   @Override
   public String getSystem() {
-    return String.format("https://fhir.diz.uni-marburg.de/sid/diagnostic-report-id");
+    return this.fhirProperties.identifierSystem("diagnostic-report-id");
   }
 }

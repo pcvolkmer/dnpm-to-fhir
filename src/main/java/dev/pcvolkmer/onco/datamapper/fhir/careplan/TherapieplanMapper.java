@@ -49,7 +49,10 @@ public class TherapieplanMapper extends CarePlanMapper<MtbCarePlan> {
   @Override
   public CarePlan map(MtbCarePlan sourceItem) {
     var result = new CarePlan();
+
     result.addIdentifier().setSystem(this.getSystem()).setValue(sourceItem.getId());
+    this.setResourceId(
+        result, new Identifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem)));
 
     result.setMeta(
         new Meta()
@@ -82,12 +85,10 @@ public class TherapieplanMapper extends CarePlanMapper<MtbCarePlan> {
     if (null != reasonReference) {
       final var reasonId = reasonReference.getId();
       result.addAddresses(
-          new Reference()
-              .setReference(
-                  this.referenceBuilder
-                      .getReference(
-                          reasonId, new MtbDiagnoseMapper(this.referenceBuilder, this.filters))
-                      .getReference()));
+          this.referenceBuilder.getReference(
+              reasonId,
+              reasonId + "_mtbdiagnose",
+              new MtbDiagnoseMapper(this.referenceBuilder, this.filters)));
     }
 
     // TODO Add other planned activities

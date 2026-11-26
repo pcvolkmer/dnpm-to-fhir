@@ -143,14 +143,8 @@ public abstract class AbstractTnmMapper extends ObservationMapper<TumorStaging>
                           .setSystem(this.getSystem())
                           .setValue(
                               String.format("%s_%s-%d", sourceItem.getId(), idSuffix(), idx))));
-
-              bundle
-                  .addEntry()
-                  .setResource(newItem)
-                  .setFullUrl(this.fullUrlUrn(requestUrl))
-                  .getRequest()
-                  .setMethod(Bundle.HTTPVerb.PUT)
-                  .setUrl(requestUrl);
+              this.setResourceId(newItem, newItem.getIdentifierFirstRep());
+              this.addResourceToBundle(bundle, newItem, requestUrl);
             });
   }
 

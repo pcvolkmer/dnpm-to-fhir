@@ -54,7 +54,9 @@ public class IhcMapper extends ObservationMapper<ProteinExpression>
     var result = new Observation();
     var profile = resolveProfile(sourceItem);
 
-    result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem));
+    this.setResourceId(
+        result,
+        result.addIdentifier().setSystem(this.getSystem()).setValue(this.getId(sourceItem)));
 
     result.setMeta(new Meta().setSource(this.fhirMetaSource).addProfile(profile.getCanonicalUrl()));
 

@@ -55,6 +55,6 @@ public class SpecimenMapper extends DnpmToFhirMapper<TumorSpecimen, Specimen> {
 
   @Override
   public String getSystem() {
-    return String.format("%s/sid/specimen-id", this.fhirSystemBaseUrl);
+    return this.fhirProperties.identifierSystem("specimen-id");
   }
 }

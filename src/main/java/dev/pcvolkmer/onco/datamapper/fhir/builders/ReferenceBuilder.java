@@ -20,10 +20,41 @@
 package dev.pcvolkmer.onco.datamapper.fhir.builders;
 
 import dev.pcvolkmer.onco.datamapper.fhir.DnpmToFhirMapper;
+import dev.pcvolkmer.onco.datamapper.fhir.FhirProperties;
+import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 
 public interface ReferenceBuilder {
+
+  /**
+   * Provides FHIR config
+   *
+   * @return FHIR properties, default is Marburg config
+   */
+  default FhirProperties getFhirProperties() {
+    return FhirProperties.marburg();
+  }
+
+  /**
+   * Can be overwritten by reference builders to sets the resource ID based on a given identifier
+   *
+   * @param resource FHIR resource
+   * @param identifier identifier used for ID generation
+   */
+  default void setResourceId(Resource resource, Identifier identifier) {
+    // Keep original Id behavior
+  }
+
+  /**
+   * Can be overwritten by reference builders to configure the bundle entry
+   *
+   * @param entry FHIR bundle entry
+   */
+  default void configureBundleEntry(Bundle.BundleEntryComponent entry) {
+    // Keep bundle behavior
+  }
 
   /**
    * Constructs a FHIR {@code Reference} object for the specified patient based on the provided
@@ -79,4 +110,20 @@ public interface ReferenceBuilder {
    */
   <S, D extends Resource> Reference getReference(
       String id, DnpmToFhirMapper<S, D> dnpmToFhirMapper);
+
+  /**
+   * Constructs a FHIR reference using a referenceBuilder-specific identifier
+   *
+   * @param <S> The source data type
+   * @param <D> The FHIR resource type
+   * @param referenceId The identifier used by legacy reference builders.
+   * @param resourceIdKey The identifier used for deterministic ID generation
+   * @param mapper The resource mapper
+   * @return A reference to the FHIR resource.
+   */
+  default <S, D extends Resource> Reference getReference(
+      String referenceId, String resourceIdKey, DnpmToFhirMapper<S, D> mapper) {
+
+    return this.getReference(referenceId, mapper);
+  }
 }

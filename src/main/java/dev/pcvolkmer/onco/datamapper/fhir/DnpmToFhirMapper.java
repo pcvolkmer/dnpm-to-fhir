@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
 import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.Type;
@@ -37,9 +38,10 @@ public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<
 
   private final MessageDigest md5Digest;
 
-  protected String fhirSystemBaseUrl = "https://fhir.diz.uni-marburg.de";
+  protected final FhirProperties fhirProperties;
 
-  protected String fhirMetaSource = String.format("%s/data-source/dnpm", this.fhirSystemBaseUrl);
+  protected final String fhirSystemBaseUrl;
+  protected final String fhirMetaSource;
 
   protected ReferenceBuilder referenceBuilder;
   protected List<Filter<? extends Type>> filters;
@@ -50,6 +52,10 @@ public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<
 
     this.referenceBuilder = referenceBuilder;
     this.filters = filters;
+    this.fhirProperties = referenceBuilder.getFhirProperties();
+    this.fhirSystemBaseUrl = fhirProperties.identifierBaseUrl();
+    this.fhirMetaSource = fhirProperties.metaSource();
+
     try {
       md5Digest = MessageDigest.getInstance("MD5");
     } catch (NoSuchAlgorithmException e) {
@@ -67,18 +73,26 @@ public abstract class DnpmToFhirMapper<S, D extends Resource> implements Mapper<
     return new Reference().setReference(this.getRequestUrl(item));
   }
 
+  protected void setResourceId(Resource resource, Identifier identifier) {
+    this.referenceBuilder.setResourceId(resource, identifier);
+  }
+
   @Override
   public void addToBundle(Bundle bundle, S item) {
     final var resource = map(item);
     if (null != resource) {
-      bundle
-          .addEntry()
-          .setResource(resource)
-          .setFullUrl(this.fullUrlUrn(getRequestUrl(item)))
-          .getRequest()
-          .setMethod(Bundle.HTTPVerb.PUT)
-          .setUrl(getRequestUrl(item));
+      this.addResourceToBundle(bundle, resource, getRequestUrl(item));
     }
+  }
+
+  protected void addResourceToBundle(Bundle bundle, Resource resource, String requestUrl) {
+
+    final var entry =
+        bundle.addEntry().setResource(resource).setFullUrl(this.fullUrlUrn(requestUrl));
+
+    entry.getRequest().setMethod(Bundle.HTTPVerb.PUT).setUrl(requestUrl);
+
+    this.referenceBuilder.configureBundleEntry(entry);
   }
 
   public String fullUrlUrn(String requestUrl) {

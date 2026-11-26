@@ -37,10 +37,13 @@ var fhirJsonString = FhirContext.forR4().newJsonParser().encodeToString(mapper.m
 
 ### Referenz-Builder
 
-Es sind aktuell zwei Referenz-Builder implementiert
+Es sind aktuell drei Referenz-Builder implementiert
 
-* `DefaultReferenceBuilder`: Die Standardimplemntierung, nutzbar von zahlreichen Standorten
+* `DefaultReferenceBuilder`: Die Standardimplementierung, nutzbar von zahlreichen Standorten
 * `DizUniMrReferenceBuilder`: Implementierung für das DIZ der Universität Marburg
+* `ToFhirReferenceBuilder`: Generierung von FHIR-Ressourcen-IDs und Referenzen via [to-fhir](https://github.com/diz-uker/to-fhir)-Library.
+
+Über FhirProperties können Identifier-Systeme und meta.source standortspezifisch konfiguriert werden.
 
 Weitere Implementierungen müssen das Interface `ReferenceBuilder` implementieren.
 
