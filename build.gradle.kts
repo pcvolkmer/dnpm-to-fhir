@@ -151,7 +151,7 @@ publishing {
 
             credentials(HttpHeaderCredentials::class) {
                 name = "Authorization"
-                value = "token ${properties["dnpm_dev_token"] ?: ""}"
+                value = "token ${providers.gradleProperty("dnpm_dev_token").getOrElse("")}"
             }
 
             authentication {
