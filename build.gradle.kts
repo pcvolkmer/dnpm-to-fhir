@@ -21,7 +21,7 @@ val commonsIo = "2.22.0"
 val slf4j = "2.0.17"
 val hapiFhirVersion = "7.6.1"
 
-val toFhirVersion = "0.2.21"
+val toFhirVersion = "0.2.23"
 
 // Test dependencies
 val junit = "5.14.4"
